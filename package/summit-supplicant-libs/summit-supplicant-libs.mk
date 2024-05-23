@@ -4,6 +4,8 @@
 #
 #############################################################
 
+ifneq ($(BR2_LRD_DEVEL_BUILD),y)
+
 ifeq ($(BR2_PACKAGE_SUMMIT_SUPPLICANT_LIBS_LEGACY),y)
 SUMMIT_SUPPLICANT_LIBS_VERSION = $(call qstrip,$(SUMMIT_MSD_RADIO_STACK_VERSION_VALUE))
 SUMMIT_SUPPLICANT_LIBS_SITE = $(SUMMIT_RADIO_URI_BASE_MSD)-$(SUMMIT_SUPPLICANT_LIBS_VERSION)
@@ -29,11 +31,14 @@ define SUMMIT_SUPPLICANT_LIBS_INSTALL_TARGET_CMDS
 endef
 
 ifeq ($(BR2_PACKAGE_SUMMIT_SUPPLICANT_LIBS_LEGACY),y)
-SUMMIT_SUPPLICANT_LIBS_EXTRACT=usr/include
+SUMMIT_SUPPLICANT_LIBS_EXTRACT = usr/include
 endif
+
 define SUMMIT_SUPPLICANT_LIBS_INSTALL_STAGING_CMDS
 	tar -xjf $($(PKG)_DL_DIR)/$(SUMMIT_SUPPLICANT_LIBS_EXTRA_DOWNLOADS) -C $(STAGING_DIR) --keep-directory-symlink --no-overwrite-dir --touch \
 		--wildcards $(SUMMIT_SUPPLICANT_LIBS_EXTRACT) usr/lib/lib*
 endef
+
+endif
 
 $(eval $(generic-package))

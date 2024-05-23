@@ -21,7 +21,7 @@ SUMMIT_REG45N_POST_EXTRACT_HOOKS += SUMMIT_REG45N_POST_EXTRACT
 
 define SUMMIT_REG45N_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 755 -t $(TARGET_DIR)/usr/bin $(@D)/lru $(@D)/smu_cli $(@D)/tcmd.sh
-	$(INSTALL) -D -m 644 -t $(TARGET_DIR)/lib/firmware/ath6k/AR6003/hw2.1.1/ $(@D)/files/utf*.bin
+	$(INSTALL) -D -m 644 -t $(TARGET_DIR)/lib/firmware/ath6k/AR6003/hw2.1.1/ $(@D)/utf*.bin
 endef
 
 endif
