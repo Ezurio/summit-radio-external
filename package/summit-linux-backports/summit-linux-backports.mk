@@ -88,12 +88,8 @@ SUMMIT_LINUX_BACKPORTS_MAKE_OPTS = \
 SUMMIT_LINUX_BACKPORTS_MODULE_MAKE_OPTS = $(SUMMIT_LINUX_BACKPORTS_MAKE_OPTS)
 
 define SUMMIT_LINUX_BACKPORTS_INSTALL_STAGING_CMDS
-    $(INSTALL) -d $(STAGING_DIR)/usr/include/linux-backports
-    cp -R --no-dereference --preserve=mode,links -v $(@D)/include $(STAGING_DIR)/usr/include/linux-backports
-    cp -R --no-dereference --preserve=mode,links -v $(@D)/backport-include $(STAGING_DIR)/usr/include/linux-backports
-    rm -f $(STAGING_DIR)/usr/include/linux-backports/backport-include/linux/module.h   
+	rsync -rlpDWK --no-perms --inplace --exclude module.h $(@D)/include $(@D)/backport-include $(STAGING_DIR)/usr/include/linux-backports
 endef
-
 
 # Checks to give errors that the user can understand
 ifeq ($(BR_BUILDING),y)
