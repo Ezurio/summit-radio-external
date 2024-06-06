@@ -40,6 +40,7 @@ endif
 
 SUMMIT_LINUX_BACKPORTS_SOURCE = summit-backports-$(SUMMIT_LINUX_BACKPORTS_VERSION).tar.bz2
 
+SUMMIT_LINUX_BACKPORTS_INSTALL_STAGING = YES
 SUMMIT_LINUX_BACKPORTS_MINIMAL_KVER_MAJOR = 3
 SUMMIT_LINUX_BACKPORTS_MINIMAL_KVER_MINOR = 0
 SUMMIT_LINUX_BACKPORTS_LICENSE = GPL-2.0
@@ -85,6 +86,14 @@ SUMMIT_LINUX_BACKPORTS_MAKE_OPTS = \
 	INSTALL_MOD_DIR=updates
 
 SUMMIT_LINUX_BACKPORTS_MODULE_MAKE_OPTS = $(SUMMIT_LINUX_BACKPORTS_MAKE_OPTS)
+
+define SUMMIT_LINUX_BACKPORTS_INSTALL_STAGING_CMDS
+    $(INSTALL) -d $(STAGING_DIR)/usr/include/linux-backports
+    cp -R --no-dereference --preserve=mode,links -v $(@D)/include $(STAGING_DIR)/usr/include/linux-backports
+    cp -R --no-dereference --preserve=mode,links -v $(@D)/backport-include $(STAGING_DIR)/usr/include/linux-backports
+    rm -f $(STAGING_DIR)/usr/include/linux-backports/backport-include/linux/module.h   
+endef
+
 
 # Checks to give errors that the user can understand
 ifeq ($(BR_BUILDING),y)
