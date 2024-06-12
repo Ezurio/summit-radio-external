@@ -13,7 +13,7 @@ else
 endif
 
 define SUMMIT_FIRMWARE_BDSDMAC_INSTALL_TARGET_CMDS
-  rsync -rlpDWK --no-perms --inplace --exclude '.*' --exclude LICENSE $(@D) $(TARGET_DIR)/
+  rsync -rlpDWK --no-perms --inplace --exclude '.*' --exclude LICENSE.qca_firmware --exclude notice.txt $(@D) $(TARGET_DIR)/
 endef
 
 endif
