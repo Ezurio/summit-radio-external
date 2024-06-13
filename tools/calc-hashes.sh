@@ -28,7 +28,7 @@ hash_file() {
 }
 
 if [ -n "${1}" ]; then
-	sed -i -r "s/(.+=).*/\1 ${1}" versions.mk
+	sed -i -r "s/(.+=).*/\1 ${1}/g" versions.mk
 fi
 
 prefix="https://files.devops.rfpros.com/builds/linux"
