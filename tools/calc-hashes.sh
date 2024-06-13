@@ -9,7 +9,7 @@ err_report() {
 trap 'err_report ${LINENO} "${BASH_COMMAND}"' EXIT
 
 get_version() {
-	sed -rn "s,.*$1.*=\s*([0-9.]+),\1,p" versions.mk
+	sed -rn "s,.*${1}.*=\s*([0-9.]+),\1,p" versions.mk
 }
 
 calc_file () {
@@ -26,6 +26,10 @@ unique() {
 hash_file() {
 	echo "package/${1}/${1}.hash"
 }
+
+if [ -n "${1}" ]; then
+	sed -i -r "s/(.+=).*/\1 ${1}" versions.mk
+fi
 
 prefix="https://files.devops.rfpros.com/builds/linux"
 
@@ -76,7 +80,7 @@ do
 done
 
 cat << EOF >> "$(hash_file summit-supplicant)"
-sha256  af01e1d1ee065a1054d20ebe8a78a016f1fb1133b73e6a9d50801b165bb280c7  README
+sha256 af01e1d1ee065a1054d20ebe8a78a016f1fb1133b73e6a9d50801b165bb280c7  README
 EOF
 
 # Calculate hashes for the summit-hostapd package
@@ -90,9 +94,9 @@ do
 done
 
 cat << EOF >> "$(hash_file summit-linux-backports)"
-sha256  fb5a425bd3b3cd6071a3a9aff9909a859e7c1158d54d32e07658398cd67eb6a0  COPYING
-sha256  8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f  LICENSES/exceptions/Linux-syscall-note
-sha256  f6b78c087c3ebdf0f3c13415070dd480a3f35d8fc76f3d02180a407c1c812f79  LICENSES/preferred/GPL-2.0
+sha256 fb5a425bd3b3cd6071a3a9aff9909a859e7c1158d54d32e07658398cd67eb6a0  COPYING
+sha256 8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f  LICENSES/exceptions/Linux-syscall-note
+sha256 f6b78c087c3ebdf0f3c13415070dd480a3f35d8fc76f3d02180a407c1c812f79  LICENSES/preferred/GPL-2.0
 EOF
 
 # Calculate hashes for the summit-network-manager package
@@ -103,9 +107,9 @@ do
 done
 
 cat << EOF >> "$(hash_file summit-network-manager)"
-sha256  8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643  COPYING
-sha256  dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551  COPYING.LGPL
-sha256  9f7f0d40116e5a0f1566b9da71e9c95738c99364e4b5437d8115aa614490372b  CONTRIBUTING.md
+sha256 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643  COPYING
+sha256 dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551  COPYING.LGPL
+sha256 9f7f0d40116e5a0f1566b9da71e9c95738c99364e4b5437d8115aa614490372b  CONTRIBUTING.md
 EOF
 
 # Calculate hashes for the summit-firmware-60 package
