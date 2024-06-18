@@ -29,17 +29,18 @@ SUMMIT_SUPPLICANT_LIBS_LICENSE_FILES = LICENSE.ezurio
 SUMMIT_SUPPLICANT_LIBS_INSTALL_STAGING = YES
 
 define SUMMIT_SUPPLICANT_LIBS_INSTALL_TARGET_CMDS
-	rsync -rlpDWK --no-perms --inplace --exclude=libsdc_sdk.so $(@D)/usr/lib $(TARGET_DIR)/usr/lib
+	$(INSTALL) -D -m 0644 -t $(TARGET_DIR)/usr/lib $(@D)/lib/*
+	rm -f $(TARGET_DIR)/usr/lib/libsdc_sdk.so
 endef
 
 ifeq ($(BR2_PACKAGE_SUMMIT_SUPPLICANT_LIBS_LEGACY),y)
 define SUMMIT_SUPPLICANT_LIBS_LEGACY_INSTALL_STAGING_CMDS
-	rsync -rlpDWK --no-perms --inplace $(@D)/usr/include $(TARGET_DIR)/usr/include
+	$(INSTALL) -D -m 0644 -t $(STAGING_DIR)/usr/include $(@D)/include/*
 endef
 endif
 
 define SUMMIT_SUPPLICANT_LIBS_INSTALL_STAGING_CMDS
-	rsync -rlpDWK --no-perms --inplace $(@D)/usr/lib/lib* $(TARGET_DIR)/usr/lib
+	$(INSTALL) -D -m 0644 -t $(STAGING_DIR)/usr/lib $(@D)/lib/lib*
 	$(SUMMIT_SUPPLICANT_LIBS_LEGACY_INSTALL_STAGING_CMDS)
 endef
 
