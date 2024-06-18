@@ -14,7 +14,7 @@ get_version() {
 
 calc_file () {
 	/usr/bin/wget -T4 -t1 "${prefix}/${1}"
-	printf "sha256 " >> "${2}"
+	printf "sha256  " >> "${2}"
 	sha256sum "${1##*/}" >> "${2}"
 	rm -f "${1##*/}"
 }
@@ -30,6 +30,8 @@ hash_file() {
 if [ -n "${1}" ]; then
 	sed -i -r "s/(.+=).*/\1 ${1}/g" versions.mk
 fi
+
+LICENSE_SUMMIT='sha256  050fbd650ae81b51e455a11dbd9de265e3bbc9558e5e3d8c9603b211c279dcc5  LICENSE.ezurio'
 
 prefix="https://files.devops.rfpros.com/builds/linux"
 
@@ -80,7 +82,7 @@ do
 done
 
 cat << EOF >> "$(hash_file summit-supplicant)"
-sha256 af01e1d1ee065a1054d20ebe8a78a016f1fb1133b73e6a9d50801b165bb280c7  README
+sha256  af01e1d1ee065a1054d20ebe8a78a016f1fb1133b73e6a9d50801b165bb280c7  README
 EOF
 
 # Calculate hashes for the summit-hostapd package
@@ -94,9 +96,10 @@ do
 done
 
 cat << EOF >> "$(hash_file summit-linux-backports)"
-sha256 fb5a425bd3b3cd6071a3a9aff9909a859e7c1158d54d32e07658398cd67eb6a0  COPYING
-sha256 8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f  LICENSES/exceptions/Linux-syscall-note
-sha256 f6b78c087c3ebdf0f3c13415070dd480a3f35d8fc76f3d02180a407c1c812f79  LICENSES/preferred/GPL-2.0
+sha256  fb5a425bd3b3cd6071a3a9aff9909a859e7c1158d54d32e07658398cd67eb6a0  COPYING
+sha256  8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f  LICENSES/exceptions/Linux-syscall-note
+sha256  f6b78c087c3ebdf0f3c13415070dd480a3f35d8fc76f3d02180a407c1c812f79  LICENSES/preferred/GPL-2.0
+${LICENSE_SUMMIT}
 EOF
 
 # Calculate hashes for the summit-network-manager package
@@ -107,9 +110,10 @@ do
 done
 
 cat << EOF >> "$(hash_file summit-network-manager)"
-sha256 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643  COPYING
-sha256 dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551  COPYING.LGPL
-sha256 9f7f0d40116e5a0f1566b9da71e9c95738c99364e4b5437d8115aa614490372b  CONTRIBUTING.md
+sha256  8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643  COPYING
+sha256  dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551  COPYING.LGPL
+sha256  9f7f0d40116e5a0f1566b9da71e9c95738c99364e4b5437d8115aa614490372b  CONTRIBUTING.md
+${LICENSE_SUMMIT}
 EOF
 
 # Calculate hashes for the summit-firmware-60 package
@@ -121,7 +125,8 @@ done
 calc_file "firmware/${version_60}/summit-som8mp-radio-firmware-${version_60}.tar.bz2" "$(hash_file summit-firmware-60)"
 
 cat << EOF >> "$(hash_file summit-firmware-60)"
-sha256 e7f209cca420dd2b6f00935df44053a32cdaa6b5eca8ad12c55b4968ac20579c  LICENSE
+sha256  2accdbff2dfad766f2533a8976f15f550625253987b6ee75c06f80a8227822c2  LICENSE.nxp1
+${LICENSE_SUMMIT}
 EOF
 
 # Calculate hashes for the summit-firmware-bdsdmac package
@@ -129,8 +134,7 @@ rm -f "$(hash_file summit-firmware-bdsdmac)"
 calc_file "firmware/${version_bdsdmac}/summit-bdsdmac-firmware-${version_bdsdmac}.tar.bz2" "$(hash_file summit-firmware-bdsdmac)"
 
 cat << EOF >> "$(hash_file summit-firmware-bdsdmac)"
-sha256 4ea56b251222f9d121c22f92e5d860750ab1b29a1d743be83b0f3af311d4972c  LICENSE.qca_firmware
-sha256 b5f0ccacca8aead9cd18ca89ca2ca0d29fc65c8d55b8ac1dc7f7602322b944fb  notice.txt
+sha256  4ea56b251222f9d121c22f92e5d860750ab1b29a1d743be83b0f3af311d4972c  LICENSE.qca_firmware
 EOF
 
 # Calculate hashes for the summit-firmware-lwb package
@@ -160,7 +164,8 @@ done
 calc_file "firmware/${version_lwb}/summit-if513-sdio-firmware-${version_lwb}.tar.bz2" "$(hash_file summit-firmware-lwb-if)"
 
 cat << EOF >> "$(hash_file summit-firmware-lwb-if)"
-sha256 e7f209cca420dd2b6f00935df44053a32cdaa6b5eca8ad12c55b4968ac20579c  LICENSE
+sha256  3a892759b73e8b459f1a750954b316118b0061fd9d1868d11fa258c104ee7e0c  LICENSE.cypress
+${LICENSE_SUMMIT}
 EOF
 
 # Calculate hashes for the summit-firmware-msd package
@@ -171,7 +176,8 @@ do
 done
 
 cat << EOF >> "$(hash_file summit-firmware-msd)"
-sha256 e7f209cca420dd2b6f00935df44053a32cdaa6b5eca8ad12c55b4968ac20579c  LICENSE
+sha256  802b7014b26c606cf6248ae8b0ab1ce6d2d1b0db236d38dd269e676cd70710f2  LICENSE.atheros
+${LICENSE_SUMMIT}
 EOF
 
 # Calculate hashes for the summit-firmware-nx package
@@ -179,7 +185,8 @@ rm -f "$(hash_file summit-firmware-nx)"
 calc_file "firmware/${version_nx}/sona-nx61x-firmware-${version_nx}.tar.bz2" "$(hash_file summit-firmware-nx)"
 
 cat << EOF >> "$(hash_file summit-firmware-nx)"
-sha256 e7f209cca420dd2b6f00935df44053a32cdaa6b5eca8ad12c55b4968ac20579c  LICENSE
+sha256  3dd8aa2ede25fcc34b72754473dc3d3924a57b550bfcafe3a48d8bd951abf383  LICENSE.nxp2
+${LICENSE_SUMMIT}
 EOF
 
 # Calculate hashes for the summit-firmware-ti package
@@ -190,7 +197,7 @@ do
 done
 
 cat << EOF >> "$(hash_file summit-firmware-ti)"
-sha256 e7f209cca420dd2b6f00935df44053a32cdaa6b5eca8ad12c55b4968ac20579c  LICENSE
+${LICENSE_SUMMIT}
 EOF
 
 # Calculate hashes for the summit-mfg60n package
@@ -199,6 +206,9 @@ for i in x86 x86_64 arm-eabi arm-eabihf aarch64 powerpc64-e5500
 do
 	calc_file "mfg60n/laird/${version_60}/mfg60n-${i}-${version_60}.tar.bz2" "$(hash_file summit-mfg60n)"
 done
+cat << EOF >> "$(hash_file summit-mfg60n)"
+${LICENSE_SUMMIT}
+EOF
 
 # Calculate hashes for the summit-reg45n package
 rm -f "$(hash_file summit-reg45n)"
@@ -206,6 +216,9 @@ for i in arm-eabi arm-eabihf
 do
 	calc_file "reg45n/laird/${version_msd}/reg45n-${i}-${version_msd}.tar.bz2" "$(hash_file summit-reg45n)"
 done
+cat << EOF >> "$(hash_file summit-reg45n)"
+${LICENSE_SUMMIT}
+EOF
 
 # Calculate hashes for the summit-reg50n package
 rm -f "$(hash_file summit-reg50n)"
@@ -213,6 +226,9 @@ for i in arm-eabi arm-eabihf
 do
 	calc_file "reg50n/laird/${version_msd}/reg50n-${i}-${version_msd}.tar.bz2" "$(hash_file summit-reg50n)"
 done
+cat << EOF >> "$(hash_file summit-reg50n)"
+${LICENSE_SUMMIT}
+EOF
 
 # Calculate hashes for the summit-regcypress package
 rm -f "$(hash_file summit-regcypress)"
@@ -220,6 +236,10 @@ for i in arm-eabi arm-eabihf aarch64
 do
 	calc_file "regCypress/laird/${version_lwb}/regCypress-${i}-${version_lwb}.tar.bz2" "$(hash_file summit-regcypress)"
 done
+cat << EOF >> "$(hash_file summit-regcypress)"
+sha256  34c3cec7451f3a1f5d42f282358ed564bdbb3bc582073873428c3d31cc643782  FOSS_README.txt
+${LICENSE_SUMMIT}
+EOF
 
 # Calculate hashes for the summit-reglwb5plus package
 rm -f "$(hash_file summit-reglwb5plus)"
@@ -227,6 +247,10 @@ for i in x86 x86_64 arm-eabi arm-eabihf aarch64 powerpc64-e5500
 do
 	calc_file "regLWB5plus/laird/${version_lwb}/regLWB5plus-${i}-${version_lwb}.tar.bz2" "$(hash_file summit-reglwb5plus)"
 done
+cat << EOF >> "$(hash_file summit-reglwb5plus)"
+sha256  34c3cec7451f3a1f5d42f282358ed564bdbb3bc582073873428c3d31cc643782  FOSS_README.txt
+${LICENSE_SUMMIT}
+EOF
 
 # Calculate hashes for the summit-reglwbplus package
 rm -f "$(hash_file summit-reglwbplus)"
@@ -234,6 +258,10 @@ for i in x86 x86_64 arm-eabi arm-eabihf aarch64 powerpc64-e5500
 do
 	calc_file "regLWBplus/laird/${version_lwb}/regLWBplus-${i}-${version_lwb}.tar.bz2" "$(hash_file summit-reglwbplus)"
 done
+cat << EOF >> "$(hash_file summit-reglwbplus)"
+sha256  34c3cec7451f3a1f5d42f282358ed564bdbb3bc582073873428c3d31cc643782  FOSS_README.txt
+${LICENSE_SUMMIT}
+EOF
 
 # Calculate hashes for the summit-regif573 package
 rm -f "$(hash_file summit-regif573)"
@@ -241,6 +269,10 @@ for i in x86 x86_64 arm-eabi arm-eabihf aarch64 powerpc64-e5500
 do
 	calc_file "regIF573/laird/${version_lwb}/regIF573-${i}-${version_lwb}.tar.bz2" "$(hash_file summit-regif573)"
 done
+cat << EOF >> "$(hash_file summit-regif573)"
+sha256  34c3cec7451f3a1f5d42f282358ed564bdbb3bc582073873428c3d31cc643782  FOSS_README.txt
+${LICENSE_SUMMIT}
+EOF
 
 # Calculate hashes for the summit-regif513 package
 rm -f "$(hash_file summit-regif513)"
@@ -248,3 +280,7 @@ for i in x86 x86_64 arm-eabi arm-eabihf aarch64 powerpc64-e5500
 do
 	calc_file "regIF513/laird/${version_lwb}/regIF513-${i}-${version_lwb}.tar.bz2" "$(hash_file summit-regif513)"
 done
+cat << EOF >> "$(hash_file summit-regif513)"
+sha256  34c3cec7451f3a1f5d42f282358ed564bdbb3bc582073873428c3d31cc643782  FOSS_README.txt
+${LICENSE_SUMMIT}
+EOF
