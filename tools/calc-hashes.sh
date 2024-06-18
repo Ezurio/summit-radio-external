@@ -31,7 +31,7 @@ if [ -n "${1}" ]; then
 	sed -i -r "s/(.+=).*/\1 ${1}/g" versions.mk
 fi
 
-LICENSE_SUMMIT='sha256  050fbd650ae81b51e455a11dbd9de265e3bbc9558e5e3d8c9603b211c279dcc5  LICENSE.ezurio'
+LICENSE_SUMMIT='sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio'
 
 prefix="https://files.devops.rfpros.com/builds/linux"
 
@@ -83,6 +83,7 @@ done
 
 cat << EOF >> "$(hash_file summit-supplicant)"
 sha256  af01e1d1ee065a1054d20ebe8a78a016f1fb1133b73e6a9d50801b165bb280c7  README
+${LICENSE_SUMMIT}
 EOF
 
 # Calculate hashes for the summit-hostapd package
