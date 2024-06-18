@@ -30,6 +30,7 @@ SUMMIT_SUPPLICANT_LIBS_LICENSE_FILES = LICENSE.ezurio
 SUMMIT_SUPPLICANT_LIBS_INSTALL_STAGING = YES
 
 define SUMMIT_SUPPLICANT_LIBS_INSTALL_TARGET_CMDS
+	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin $(@D)/usr/bin/*
 	$(INSTALL) -D -m 0644 -t $(TARGET_DIR)/usr/lib $(@D)/usr/lib/*
 	rm -f $(TARGET_DIR)/usr/lib/libsdc_sdk.so
 endef
