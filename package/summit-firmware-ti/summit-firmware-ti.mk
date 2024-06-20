@@ -48,7 +48,7 @@ endef
 SUMMIT_FIRMWARE_TI_POST_EXTRACT_HOOKS += SUMMIT_FIRMWARE_TI_EXTRACT_HOOK
 
 define SUMMIT_FIRMWARE_TI_INSTALL_TARGET_CMDS
-  rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)/lib
+  rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)
 endef
 
 endif

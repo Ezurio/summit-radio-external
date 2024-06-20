@@ -32,7 +32,7 @@ endef
 SUMMIT_FIRMWARE_MSD_POST_EXTRACT_HOOKS += SUMMIT_FIRMWARE_MSD_EXTRACT_HOOK
 
 define SUMMIT_FIRMWARE_MSD_INSTALL_TARGET_CMDS
-  rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)/lib
+  rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)
 endef
 
 endif

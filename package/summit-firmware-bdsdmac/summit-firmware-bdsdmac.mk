@@ -17,7 +17,7 @@ else
 endif
 
 define SUMMIT_FIRMWARE_BDSDMAC_INSTALL_TARGET_CMDS
-  rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)/lib
+  rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)
 endef
 
 endif
