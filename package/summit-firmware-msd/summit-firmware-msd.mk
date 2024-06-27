@@ -23,6 +23,11 @@ endif
 
 ifeq ($(BR2_PACKAGE_SUMMIT_FIRMWARE_MSD_50),y)
 SUMMIT_FIRMWARE_MSD_DOWNLOADS += summit-ath6k-6004-firmware-$(SUMMIT_FIRMWARE_MSD_VERSION).tar.bz2
+
+define SUMMIT_FIRMWARE_MSD_50_OPTIONS_INSTALL_TARGET_CMDS
+echo "options ath6kl_core btcoex_chip_type=2 btcoex_ant_config=4" >> $(TARGET_DIR)/etc/modprobe.d/ath6kl.conf
+echo "options ath6kl_core allow_5720=1" >> $(TARGET_DIR)/etc/modprobe.d/ath6kl.conf
+endef
 endif
 
 define SUMMIT_FIRMWARE_MSD_EXTRACT_HOOK
@@ -33,6 +38,11 @@ SUMMIT_FIRMWARE_MSD_POST_EXTRACT_HOOKS += SUMMIT_FIRMWARE_MSD_EXTRACT_HOOK
 
 define SUMMIT_FIRMWARE_MSD_INSTALL_TARGET_CMDS
   rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)
+
+  $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
+  echo "options ath6kl_core recovery_enable=1 heart_beat_poll=200" > $(TARGET_DIR)/etc/modprobe.d/ath6kl.conf
+  echo "options ath6kl_core disable_fw_dbglog=1 suspend_mode=1" >> $(TARGET_DIR)/etc/modprobe.d/ath6kl.conf
+  $(SUMMIT_FIRMWARE_MSD_50_OPTIONS_INSTALL_TARGET_CMDS)
 endef
 
 endif
