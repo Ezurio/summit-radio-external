@@ -31,7 +31,10 @@ fi
 
 LICENSE_SUMMIT='sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio'
 
-prefix="https://files.devops.rfpros.com/builds/linux"
+[ -z "${RFPROS_FILESHARE_USER}" ] || \
+  RFPROS_FILESHARE_AUTH="${RFPROS_FILESHARE_USER}:${RFPROS_FILESHARE_PASS}@"
+
+prefix="https://${RFPROS_FILESHARE_AUTH}files.devops.rfpros.com/builds/linux"
 
 version_60=$(get_version "60")
 version_bdsdmac=$(get_version "BDSDMAC")
