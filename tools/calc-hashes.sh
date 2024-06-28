@@ -12,8 +12,13 @@ get_version() {
 	sed -rn "s,.*${1}.*=\s*([0-9.]+),\1,p" versions.mk
 }
 
+wget="/usr/bin/wget -T4 -t1"
+
+[ -z "${RFPROS_FILESHARE_USER}" ] || \
+	wget="${wget} --user=${RFPROS_FILESHARE_USER} --password=${RFPROS_FILESHARE_PASS} --auth-no-challenge"
+
 calc_file () {
-	hash=$(/usr/bin/wget -T4 -t1 -O- "${prefix}/${1}" | sha256sum)
+	hash=$(${wget} -O- "${prefix}/${1}" | sha256sum)
 	printf "sha256  %s  %s\n" "${hash%% *}" "${1##*/}"
 }
 
@@ -31,10 +36,8 @@ fi
 
 LICENSE_SUMMIT='sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio'
 
-[ -z "${RFPROS_FILESHARE_USER}" ] || \
-  RFPROS_FILESHARE_AUTH="${RFPROS_FILESHARE_USER}:${RFPROS_FILESHARE_PASS}@"
 
-prefix="https://${RFPROS_FILESHARE_AUTH}files.devops.rfpros.com/builds/linux"
+prefix="https://files.devops.rfpros.com/builds/linux"
 
 version_60=$(get_version "60")
 version_bdsdmac=$(get_version "BDSDMAC")
