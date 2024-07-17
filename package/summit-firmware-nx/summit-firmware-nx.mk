@@ -19,7 +19,7 @@ endif
 define SUMMIT_FIRMWARE_NX_INSTALL_TARGET_CMDS
   rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)
   $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
-  echo "options moal fw_name=nxp/sd_w61x_v1.bin.se drv_mode=3 cntry_txpwr=2 drvdbg=6" > $(TARGET_DIR)/etc/modprobe.d/moal.conf
+  echo "options moal mod_para=nxp/wifi_mod_para.conf" > $(TARGET_DIR)/etc/modprobe.d/moal.conf
 endef
 
 endif
