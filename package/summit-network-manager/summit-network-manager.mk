@@ -60,7 +60,8 @@ SUMMIT_NETWORK_MANAGER_CONF_OPTS = \
 	-Dwext=false \
 	-Dcrypto=openssl \
 	-Diwd=false \
-	-Dconfig_wifi_backend_default=wpa_supplicant
+	-Dconfig_wifi_backend_default=wpa_supplicant \
+	-Dreadline=libedit
 
 ifeq ($(BR2_PACKAGE_AUDIT),y)
 SUMMIT_NETWORK_MANAGER_DEPENDENCIES += audit
@@ -172,7 +173,7 @@ SUMMIT_NETWORK_MANAGER_CONF_OPTS += -Dpolkit=false
 endif
 
 ifeq ($(BR2_PACKAGE_SUMMIT_NETWORK_MANAGER_CLI),y)
-SUMMIT_NETWORK_MANAGER_DEPENDENCIES += readline
+SUMMIT_NETWORK_MANAGER_DEPENDENCIES += libedit
 SUMMIT_NETWORK_MANAGER_CONF_OPTS += -Dnmcli=true
 else
 SUMMIT_NETWORK_MANAGER_CONF_OPTS += -Dnmcli=false

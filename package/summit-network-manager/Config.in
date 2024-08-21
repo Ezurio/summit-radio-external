@@ -59,7 +59,7 @@ config BR2_PACKAGE_SUMMIT_NETWORK_MANAGER_TUI
 
 config BR2_PACKAGE_SUMMIT_NETWORK_MANAGER_CLI
 	bool "nmcli support"
-	select BR2_PACKAGE_READLINE
+	select BR2_PACKAGE_LIBEDIT
 	default y
 	help
 	  This option enables support for the NetworkManager Command
