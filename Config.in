@@ -7,6 +7,7 @@ choice
 		bool "SOM60 Radio Bundle"
 		select BR2_PACKAGE_SUMMIT_ADAPTIVE_BT if BR2_PACKAGE_BLUEZ5_UTILS
 		select BR2_PACKAGE_SUMMIT_ADAPTIVE_WW
+		select BR2_PACKAGE_SUMMIT_BT_UART_SCRIPTS_60 if BR2_PACKAGE_BLUEZ5_UTILS
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_60
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_60_SDIO_UART
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
@@ -93,6 +94,7 @@ choice
 		bool "Core 60 Radio Bundle"
 		imply BR2_PACKAGE_SUMMIT_ADAPTIVE_BT if BR2_PACKAGE_BLUEZ5_UTILS
 		imply BR2_PACKAGE_SUMMIT_ADAPTIVE_WW
+		imply BR2_PACKAGE_SUMMIT_BT_UART_SCRIPTS_60 if BR2_PACKAGE_BLUEZ5_UTILS
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_60
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_60
@@ -192,6 +194,7 @@ config BR2_PACKAGE_SUMMIT_RADIO_STACK_ARCH
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-adaptive_bt/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-adaptive_ww/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-brcm-patchram-plus/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-bt-uart-scripts-60/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-60/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-bdsdmac/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-lwb-if/Config.in"

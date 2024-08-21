@@ -1,4 +1,4 @@
-config BR2_PACKAGE_SUMMIT_MFG60N
+menuconfig BR2_PACKAGE_SUMMIT_MFG60N
 	bool "60 series manufacturing tools binaries"
 	select BR2_PACKAGE_LIBNL
 	select BR2_PACKAGE_LIBEDIT
@@ -10,6 +10,7 @@ config BR2_PACKAGE_SUMMIT_MFG60N
 	  This package installs 60 series manufacturing tools.
 
 if BR2_PACKAGE_SUMMIT_MFG60N
+
 config BR2_PACKAGE_SUMMIT_MFG60N_LMU
 	bool "60 series manufacturing tool (lmu)"
 	default y

@@ -1,4 +1,4 @@
-config BR2_PACKAGE_SUMMIT_HOSTAPD
+menuconfig BR2_PACKAGE_SUMMIT_HOSTAPD
 	bool "Summit hostapd"
 	select BR2_PACKAGE_LIBNL
 	select BR2_PACKAGE_OPENSSL

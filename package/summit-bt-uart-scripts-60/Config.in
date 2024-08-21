@@ -1,0 +1,21 @@
+menuconfig BR2_PACKAGE_SUMMIT_BT_UART_SCRIPTS_60
+	bool "Summit Bluetooth UART Scripts for 60 Radio"
+	depends on BR2_PACKAGE_BLUEZ5_UTILS
+	help
+	  Summit Bluetooth UART Scripts for 60 Radio
+
+if BR2_PACKAGE_SUMMIT_BT_UART_SCRIPTS_60
+
+config BR2_PACKAGE_SUMMIT_BT_UART_SCRIPTS_60_PORT
+	string "Bluetooth UART Port"
+	default "/dev/ttyS1"
+	help
+	  Bluetooth UART Port
+
+config BR2_PACKAGE_SUMMIT_BT_UART_SCRIPTS_60_BAUD
+	int "Bluetooth UART Baudrate"
+	default 3000000
+	help
+	  Bluetooth UART Baudrate
+
+endif

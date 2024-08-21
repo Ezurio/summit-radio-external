@@ -1,4 +1,4 @@
-config BR2_PACKAGE_SUMMIT_ADAPTIVE_WW
+menuconfig BR2_PACKAGE_SUMMIT_ADAPTIVE_WW
 	bool "Summit Adaptive World Mode Binaries Installer"
 	select BR2_PACKAGE_LIBNL
 	select BR2_PACKAGE_ADAPTIVE_WW if BR2_LRD_DEVEL_BUILD
