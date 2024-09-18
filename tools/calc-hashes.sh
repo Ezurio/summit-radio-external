@@ -187,7 +187,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 
 # Calculate hashes for the summit-firmware-nx package
 {
-	calc_file "firmware/${version_nx}/sona-nx61x-firmware-${version_nx}.tar.bz2"
+	calc_file "firmware/${version_nx}/summit-nx61x-firmware-${version_nx}.tar.bz2"
 
 	echo "sha256  3dd8aa2ede25fcc34b72754473dc3d3924a57b550bfcafe3a48d8bd951abf383  LICENSE.nxp2"
 	echo "${LICENSE_SUMMIT}"
