@@ -99,9 +99,11 @@ endef
 
 SUMMIT_FIRMWARE_LWB_IF_POST_EXTRACT_HOOKS += SUMMIT_FIRMWARE_LWB_IF_EXTRACT_HOOK
 
+ifneq ($(SUMMIT_FIRMWARE_LWB_IF_SOURCE),)
 define SUMMIT_FIRMWARE_LWB_IF_INSTALL_TARGET_CMDS
   rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)
 endef
+endif
 
 endif
 
