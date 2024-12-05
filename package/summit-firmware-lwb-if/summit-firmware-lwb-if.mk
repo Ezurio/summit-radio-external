@@ -100,8 +100,17 @@ endef
 SUMMIT_FIRMWARE_LWB_IF_POST_EXTRACT_HOOKS += SUMMIT_FIRMWARE_LWB_IF_EXTRACT_HOOK
 
 ifneq ($(SUMMIT_FIRMWARE_LWB_IF_SOURCE),)
+ifneq ($(call qstrip,$(BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_REGDOMAIN)),)
+define SUMMIT_FIRMWARE_LWB_IF_INSTALL_REGDOMAIN
+      $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
+      echo 'options brcmfmac regdomain=$(BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_REGDOMAIN)' \
+        > "$(TARGET_DIR)/modprobe.d/brcmfmac_regd.conf"
+endef
+endif
+
 define SUMMIT_FIRMWARE_LWB_IF_INSTALL_TARGET_CMDS
   rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)
+  $(SUMMIT_FIRMWARE_LWB_IF_INSTALL_REGDOMAIN)
 endef
 endif
 
