@@ -110,7 +110,7 @@ ifneq ($(call qstrip,$(BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_REGDOMAIN)),)
 define SUMMIT_FIRMWARE_LWB_IF_INSTALL_REGDOMAIN
       $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
       echo 'options brcmfmac regdomain=$(BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_REGDOMAIN)' \
-        > "$(TARGET_DIR)/modprobe.d/brcmfmac_regd.conf"
+        > "$(TARGET_DIR)/etc/modprobe.d/brcmfmac_regd.conf"
 endef
 endif
 
