@@ -167,7 +167,11 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 		calc_file "firmware/${version_lwb}/summit-if573-${i}-firmware-${version_lwb}.tar.bz2"
 	done
 
-	calc_file "firmware/${version_lwb}/summit-if513-sdio-firmware-${version_lwb}.tar.bz2"
+	for i in sdio-div sdio-sa
+	do
+		calc_file "firmware/${version_lwb}/summit-if513-${i}-firmware-${version_lwb}.tar.bz2"
+	done
+
 
 	echo "sha256  3a892759b73e8b459f1a750954b316118b0061fd9d1868d11fa258c104ee7e0c  LICENSE.cypress"
 	echo "${LICENSE_SUMMIT}"
