@@ -54,6 +54,13 @@ config BR2_PACKAGE_SUMMIT_SUPPLICANT_FIPS
 	help
 	  Enables FIPS mode
 
+config BR2_PACKAGE_SUMMIT_SUPPLICANT_DBUS_P2P_ENABLED
+	bool "DBUS P2P Interfaces Enabled"
+	depends on BR2_PACKAGE_DBUS
+	depends on !BR2_PACKAGE_SUMMIT_SUPPLICANT_LEGACY
+	help
+	  If dbus p2p is disabled, installs dbus_overlay.conf with p2p_disabled=1, run-time disabling P2P.
+
 config BR2_PACKAGE_SUMMIT_SUPPLICANT_LIBS_LOCAL
 	bool "Internal build of the closed source libraries"
 	select BR2_PACKAGE_SUMMIT_SUPPLICANT_LIBS_BUILD

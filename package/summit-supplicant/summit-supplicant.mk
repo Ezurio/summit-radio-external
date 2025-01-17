@@ -97,11 +97,19 @@ else
     SUMMIT_SUPPLICANT_DBUS_SERVICE_POSTFIX =
 endif
 
+ifneq ($(BR2_PACKAGE_SUMMIT_SUPPLICANT_DBUS_P2P_ENABLED),y)
+define SUMMIT_SUPPLICANT_INSTALL_DBUS_OVERLAY_CONF
+	mkdir -p $(TARGET_DIR)/etc/wpa_supplicant
+	@echo "p2p_disabled=1" > $(TARGET_DIR)/etc/wpa_supplicant/dbus_overlay.conf
+endef
+endif
+
 define SUMMIT_SUPPLICANT_INSTALL_DBUS
 	$(INSTALL) -m 0644 -D $(@D)/wpa_supplicant/dbus/dbus-wpa_supplicant.conf \
 		$(TARGET_DIR)/etc/dbus-1/system.d/wpa_supplicant.conf
 	$(INSTALL) -m 0644 -D $(@D)/wpa_supplicant/dbus/fi.w1.wpa_supplicant1.service \
 		$(TARGET_DIR)/usr/share/dbus-1/system-services/fi.w1.wpa_supplicant1.service$(SUMMIT_SUPPLICANT_DBUS_SERVICE_POSTFIX)
+	$(SUMMIT_SUPPLICANT_INSTALL_DBUS_OVERLAY_CONF)
 endef
 
 define SUMMIT_SUPPLICANT_INSTALL_WPA_CLIENT_SO
