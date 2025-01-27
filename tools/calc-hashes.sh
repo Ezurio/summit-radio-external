@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-set -e
+set -o pipefail -e
 
 err_report() {
     [ $? -eq 0 ] || echo "Error calculating hashes" > /dev/stderr
