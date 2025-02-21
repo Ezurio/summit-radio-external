@@ -2,7 +2,7 @@ comment "summit-linux-backports needs a Linux kernel to be built"
 	depends on !BR2_LINUX_KERNEL
 
 menuconfig BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
-	bool "summit-linux-backports"
+	bool "Summit Linux Backports / Wi-Fi & Bluetooth drivers"
 	depends on BR2_LINUX_KERNEL
 	help
 	  The linux-backports package includes many Linux drivers from

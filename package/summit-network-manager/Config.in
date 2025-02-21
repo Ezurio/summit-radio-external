@@ -1,5 +1,5 @@
 menuconfig BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
-	bool "summit-networkmanager"
+	bool "Summit Network Manager"
 	depends on !BR2_STATIC_LIBS # gnutls
 	depends on BR2_USE_MMU # dbus
 	depends on BR2_PACKAGE_HAS_UDEV

@@ -191,20 +191,29 @@ config BR2_PACKAGE_SUMMIT_RADIO_STACK_ARCH
 	default "x86" if BR2_i386
 	default "x86_64" if BR2_x86_64
 
+comment "Summit Radio Stack individual components"
+
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-adaptive_bt/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-adaptive_ww/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-brcm-patchram-plus/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-bt-uart-scripts-60/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-hostapd/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-linux-backports/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-network-manager/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-supplicant/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-supplicant-libs/Config.in"
+
+menu "Summit Radio Firmware"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-60/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-bdsdmac/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-lwb-if/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-msd/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-nx/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-ti/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-hostapd/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-linux-backports/Config.in"
+endmenu
+
+menu "Summit Regulatory Tools"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-mfg60n/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-network-manager/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-reg45n/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-reg50n/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-regcypress/Config.in"
@@ -213,5 +222,4 @@ source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-regif573/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-reglwb5plus/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-reglwbplus/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-regti351/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-supplicant/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-supplicant-libs/Config.in"
+endmenu
