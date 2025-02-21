@@ -1,0 +1,7 @@
+config BR2_PACKAGE_SUMMIT_REGTI351
+	bool "TI351 manufacturing tools binaries"
+	select BR2_PACKAGE_LIBNL
+	select BR2_PACKAGE_LIBEDIT
+	select BR2_PACKAGE_LRU_TI if BR2_LRD_DEVEL_BUILD
+	help
+	  This package installs TI351 series manufacturing tools.

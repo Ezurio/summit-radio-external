@@ -291,3 +291,12 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	echo "sha256  34c3cec7451f3a1f5d42f282358ed564bdbb3bc582073873428c3d31cc643782  FOSS_README.txt"
 	echo "${LICENSE_SUMMIT}"
 } > "$(hash_file summit-regif513)"
+
+{
+	for i in x86 x86_64 arm-eabi arm-eabihf aarch64 powerpc64-e5500
+	do
+		calc_file "regTI351/laird/${version_ti}/regTI351-${i}-${version_ti}.tar.bz2"
+	done
+
+	echo "${LICENSE_SUMMIT}"
+} > "$(hash_file summit-regti351)"
