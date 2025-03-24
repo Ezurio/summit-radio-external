@@ -108,7 +108,7 @@ choice
 		help
 		  This option selects the default radio bundle for the Core 60 Radio
 		  User needs to manually select proper firmware variant for the radio
-		  This option is suitable for customers purchased the standalone
+		  This option is suitable for customers who have purchased the standalone
 		  60 radio
 
 	config BR2_SUMMIT_CORE_LWB_RADIO
@@ -126,13 +126,12 @@ choice
 		help
 		  This option selects the default radio bundle for the Core LWB/IF Radios
 		  User needs to manually select proper firmware variant for the radio
-		  This option is suitable for customers purchased the standalone
+		  This option is suitable for customers who have purchased the standalone
 		  LWB or IF radio
 
 	config BR2_SUMMIT_CORE_NX_RADIO
 		bool "Core NX Radio Bundle"
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_NX
-		select BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_NX
 		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
@@ -143,9 +142,9 @@ choice
 		imply BR2_PACKAGE_SUMMIT_HOSTAPD
 		imply BR2_PACKAGE_SUMMIT_HOSTAPD_NX
 		help
-		  This option selects the default radio bundle for the Core LWB/IF Radios
+		  This option selects the default radio bundle for the Core NX Radios
 		  User needs to manually select proper firmware variant for the radio
-		  This option is suitable for customers purchased the standalone
+		  This option is suitable for customers who have purchased the standalone
 		  NX radio
 
 	config BR2_SUMMIT_CORE_TI_RADIO
@@ -162,9 +161,9 @@ choice
 		imply BR2_PACKAGE_SUMMIT_HOSTAPD
 		imply BR2_PACKAGE_SUMMIT_HOSTAPD_TI
 		help
-		  This option selects the default radio bundle for the Core LWB/IF Radios
+		  This option selects the default radio bundle for the Core TI Radios
 		  User needs to manually select proper firmware variant for the radio
-		  This option is suitable for customers purchased the standalone
+		  This option is suitable for customers who have purchased the standalone
 		  TI radio
 endchoice
 
