@@ -1,7 +1,9 @@
 ifneq ($(BR2_LRD_DEVEL_BUILD),y)
 
 SUMMIT_FIRMWARE_NX_VERSION = $(SUMMIT_NX_RADIO_STACK_VERSION_VALUE)
-SUMMIT_FIRMWARE_NX_SOURCE = summit-nx61x-firmware-$(SUMMIT_FIRMWARE_NX_VERSION).tar.bz2
+SUMMIT_FIRMWARE_NX_SOURCE = $(firstword $(SUMMIT_FIRMWARE_NX_DOWNLOADS))
+SUMMIT_FIRMWARE_NX_EXTRA_DOWNLOADS = $(filter-out $(SUMMIT_FIRMWARE_NX_SOURCE),$(SUMMIT_FIRMWARE_NX_DOWNLOADS))
+
 SUMMIT_FIRMWARE_NX_STRIP_COMPONENTS = 0
 SUMMIT_FIRMWARE_NX_LICENSE = NXP, Ezurio
 SUMMIT_FIRMWARE_NX_LICENSE_FILES = LICENSE.nxp2 LICENSE.ezurio
@@ -16,10 +18,39 @@ else
   SUMMIT_FIRMWARE_NX_SITE = $(SUMMIT_RADIO_URI_BASE_NX)-$(SUMMIT_FIRMWARE_NX_VERSION)
 endif
 
-define SUMMIT_FIRMWARE_NX_INSTALL_TARGET_CMDS
-  rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)
+ifeq ($(BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X),y)
+SUMMIT_FIRMWARE_NX_DOWNLOADS += summit-nx61x-firmware-$(SUMMIT_FIRMWARE_NX_VERSION).tar.bz2
+define SUMMIT_FIRMWARE_NX_INSTALL_MOD_PROBE
   $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
   echo "options moal mod_para=nxp/wifi_mod_para.conf" > $(TARGET_DIR)/etc/modprobe.d/moal.conf
+endef
+endif
+
+ifeq ($(BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_1218),y)
+SUMMIT_FIRMWARE_NX_DOWNLOADS += summit-nx61x-1218-firmware-$(SUMMIT_FIRMWARE_NX_VERSION).tar.bz2
+ifndef SUMMIT_FIRMWARE_NX_INSTALL_MOD_PROBE
+define SUMMIT_FIRMWARE_NX_INSTALL_MOD_PROBE
+  $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
+  echo "options moal mod_para=nxp/1218_wifi_mod_para.conf" > $(TARGET_DIR)/etc/modprobe.d/moal.conf
+endef
+else
+  $(warning NX61X mod parameter may only be set once - skipping 1218 ModParameter.)
+endif
+endif
+
+define SUMMIT_FIRMWARE_NX_EXTRACT_HOOK
+  $(foreach n,$(SUMMIT_FIRMWARE_NX_EXTRA_DOWNLOADS),tar -xvjf $($(PKG)_DL_DIR)/$(n) -C $(@D) --keep-directory-symlink --no-overwrite-dir $(sep)  )
+endef
+
+SUMMIT_FIRMWARE_NX_POST_EXTRACT_HOOKS += SUMMIT_FIRMWARE_NX_EXTRACT_HOOK
+
+define SUMMIT_FIRMWARE_NX_INSTALL_BINARIES
+  rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)
+endef
+
+define SUMMIT_FIRMWARE_NX_INSTALL_TARGET_CMDS
+  $(SUMMIT_FIRMWARE_NX_INSTALL_BINARIES)
+  $(SUMMIT_FIRMWARE_NX_INSTALL_MOD_PROBE)
 endef
 
 endif
