@@ -21,7 +21,7 @@ ifeq ($(BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X),y)
 SUMMIT_FIRMWARE_NX_SOURCE = summit-nx61x-firmware-$(SUMMIT_FIRMWARE_NX_VERSION).tar.bz2
 define SUMMIT_FIRMWARE_NX_INSTALL_MOD_PROBE
   $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
-  echo "options moal mod_para=nxp/wifi_mod_para.conf" > $(TARGET_DIR)/etc/modprobe.d/moal.conf
+  echo "options moal mod_para=nxp/wifi_mod_params.conf" > $(TARGET_DIR)/etc/modprobe.d/moal.conf
 endef
 endif
 
@@ -29,7 +29,7 @@ ifeq ($(BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_1218),y)
 SUMMIT_FIRMWARE_NX_SOURCE = summit-nx61x-1218-firmware-$(SUMMIT_FIRMWARE_NX_VERSION).tar.bz2
 define SUMMIT_FIRMWARE_NX_INSTALL_MOD_PROBE
   $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
-  echo "options moal mod_para=nxp/1218_wifi_mod_para.conf" > $(TARGET_DIR)/etc/modprobe.d/moal.conf
+  echo "options moal mod_para=nxp/1218_wifi_mod_params.conf" > $(TARGET_DIR)/etc/modprobe.d/moal.conf
 endef
 endif
 
