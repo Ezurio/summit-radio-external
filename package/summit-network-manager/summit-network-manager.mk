@@ -161,7 +161,7 @@ SUMMIT_NETWORK_MANAGER_CONF_OPTS += \
 	-Dsystemd_journal=false \
 	-Dconfig_logging_backend_default=syslog \
 	-Dsession_tracking=no \
-	-Dsuspend_resume=upower \
+	-Dsuspend_resume=elogind \
 	-Dsystemdsystemunitdir=no
 endif
 
