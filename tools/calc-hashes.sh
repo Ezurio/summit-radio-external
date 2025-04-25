@@ -145,22 +145,14 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 
 # Calculate hashes for the summit-firmware-lwb package
 {
-	for i in etsi fcc jp
-	do
-		calc_file "firmware/${version_lwb}/summit-lwb-${i}-firmware-${version_lwb}.tar.bz2"
-	done
-
-	for i in etsi fcc ic jp
-	do
-		calc_file "firmware/${version_lwb}/summit-lwb5-${i}-firmware-${version_lwb}.tar.bz2"
-	done
+	calc_file "firmware/${version_lwb}/summit-lwb-firmware-${version_lwb}.tar.bz2"
+	calc_file "firmware/${version_lwb}/summit-lwb5-firmware-${version_lwb}.tar.bz2"
+	calc_file "firmware/${version_lwb}/summit-lwbplus-firmware-${version_lwb}.tar.bz2"
 
 	for i in sdio-div sdio-sa sdio-sa-m2 usb-div usb-sa usb-sa-m2
 	do
 		calc_file "firmware/${version_lwb}/summit-lwb5plus-${i}-firmware-${version_lwb}.tar.bz2"
 	done
-
-	calc_file "firmware/${version_lwb}/summit-lwbplus-firmware-${version_lwb}.tar.bz2"
 
 	for i in sdio pcie
 	do
@@ -171,7 +163,6 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		calc_file "firmware/${version_lwb}/summit-if513-${i}-firmware-${version_lwb}.tar.bz2"
 	done
-
 
 	echo "sha256  3a892759b73e8b459f1a750954b316118b0061fd9d1868d11fa258c104ee7e0c  LICENSE.cypress"
 	echo "${LICENSE_SUMMIT}"
