@@ -91,7 +91,7 @@ version_all=$(unique "${version_60}" "${version_bdsdmac}" "${version_lwb}" "${ve
 		calc_file "summit_supplicant/laird/${v}/summit_supplicant-src-${v}.tar.gz"
 	done
 
-	echo "sha256  af01e1d1ee065a1054d20ebe8a78a016f1fb1133b73e6a9d50801b165bb280c7  README"
+	echo "sha256  f1b5992bbdd015c3ccb7faaadd62ef58ed821e15b9329bf2ceb27511ccc3f562  README"
 	echo "${LICENSE_SUMMIT}"
 } > "$(hash_file summit-supplicant)"
 
@@ -120,7 +120,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 
 	echo "sha256  8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643  COPYING"
 	echo "sha256  dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551  COPYING.LGPL"
-	echo "sha256  9f7f0d40116e5a0f1566b9da71e9c95738c99364e4b5437d8115aa614490372b  CONTRIBUTING.md"
+	echo "sha256  1213e0d2a9c2365ce03db244ea3cd1097682b15fd434c1221db42b26d39b8f9e  CONTRIBUTING.md"
 	echo "${LICENSE_SUMMIT}"
 } > "$(hash_file summit-network-manager)"
 
