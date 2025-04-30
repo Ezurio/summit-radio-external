@@ -1,10 +1,9 @@
 config BR2_PACKAGE_SUMMIT_REGCYPRESS
-	bool "LWB & LWB5 manufacturing tools binaries"
+	bool "LWB manufacturing tools binaries"
 	select BR2_PACKAGE_LIBNL
 	select BR2_PACKAGE_LIBEDIT
 	select BR2_PACKAGE_WL_FMAC if BR2_LRD_DEVEL_BUILD
 	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL if BR2_LRD_DEVEL_BUILD
 	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4343_MFG if BR2_LRD_DEVEL_BUILD
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4339_MFG if BR2_LRD_DEVEL_BUILD
 	help
-	  This package installs LWB & LWB5 manufacturing tools.
+	  This package installs LWB manufacturing tools.
