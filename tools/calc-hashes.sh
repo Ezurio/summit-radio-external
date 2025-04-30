@@ -146,7 +146,6 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 # Calculate hashes for the summit-firmware-lwb package
 {
 	calc_file "firmware/${version_lwb}/summit-lwb-firmware-${version_lwb}.tar.bz2"
-	calc_file "firmware/${version_lwb}/summit-lwb5-firmware-${version_lwb}.tar.bz2"
 	calc_file "firmware/${version_lwb}/summit-lwbplus-firmware-${version_lwb}.tar.bz2"
 
 	for i in sdio-div sdio-sa sdio-sa-m2 usb-div usb-sa usb-sa-m2
