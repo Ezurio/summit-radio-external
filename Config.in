@@ -216,13 +216,14 @@ source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-ti/Config.in"
 endmenu
 
 menu "Summit Regulatory Tools"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-mfg60n/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-reg45n/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-reg50n/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-regcypress/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-mfg60n/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-regif513/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-regif573/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-reglwb5plus/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-regcypress/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-reglwbplus/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-reglwb5plus/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-mfg611/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-regti351/Config.in"
 endmenu

@@ -1,0 +1,18 @@
+menuconfig BR2_PACKAGE_SUMMIT_MFG611
+	bool "Sona NX 611 manufacturing tools binaries"
+	select BR2_PACKAGE_LIBNL
+	select BR2_PACKAGE_LIBEDIT
+	select BR2_PACKAGE_MFG611 if BR2_LRD_DEVEL_BUILD
+	help
+	  This package installs Sona NX 611 manufacturing tools.
+
+if BR2_PACKAGE_SUMMIT_MFG611
+
+config BR2_PACKAGE_SUMMIT_MFG611_LMU
+	bool "Sona NX 611 manufacturing tool (lmu)"
+	default y
+	select BR2_PACKAGE_MFG611_LMU if BR2_LRD_DEVEL_BUILD
+	help
+	  This package installs Sona NX 611 lmu for use in setting the regulatory domain.
+
+endif
