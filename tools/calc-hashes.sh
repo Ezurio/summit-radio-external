@@ -206,16 +206,6 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	echo "${LICENSE_SUMMIT}"
 } > "$(hash_file summit-firmware-nx)"
 
-# Calculate hashes for the summit-mfg611 package
-{
-	for i in x86 x86_64 arm-eabi arm-eabihf aarch64 powerpc64-e5500
-	do
-		calc_file "mfg611/laird/${version_nx}/mfg611-${i}-${version_nx}.tar.bz2"
-	done
-
-	echo "${LICENSE_SUMMIT}"
-} > "$(hash_file summit-mfg611)"
-
 # Calculate hashes for the summit-firmware-ti package
 {
 	files=
@@ -239,6 +229,18 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 
 	echo "${LICENSE_SUMMIT}"
 } > "$(hash_file summit-mfg60n)"
+
+# Calculate hashes for the summit-mfg611 package
+{
+	files=
+	for i in x86 x86_64 arm-eabi arm-eabihf aarch64 powerpc64-e5500
+	do
+		files="${files} mfg611/laird/${version_nx}/mfg611-${i}-${version_nx}.tar.bz2"
+	done
+	calc_hash "${files}"
+
+	echo "${LICENSE_SUMMIT}"
+} > "$(hash_file summit-mfg611)"
 
 # Calculate hashes for the summit-reg45n package
 {
