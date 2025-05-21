@@ -11,40 +11,6 @@ menuconfig BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 if BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 
 choice
-	prompt "Package Source"
-	default BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_TI if BR2_SUMMIT_CORE_TI_RADIO
-	default BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_NX if BR2_SUMMIT_CORE_NX_RADIO
-	default BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_LWB if BR2_SUMMIT_CORE_LWB_RADIO
-	default BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_MSD if BR2_SUMMIT_50_RADIO || BR2_SUMMIT_WB45N_LEGACY_RADIO
-	default BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_60
-
-config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_60
-	bool "Using 60 series"
-
-config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_LWB
-	bool "Using LWB/IF series"
-
-config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_MSD
-	bool "Using MSD series"
-
-config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_NX
-	bool "Using NX series"
-
-config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_TI
-	bool "Using TI series"
-
-config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_BDSDMAC
-	bool "Using BDSDMAC series"
-
-config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_COMBO
-	bool "Using multi radio"
-
-config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_LOCAL
-	bool "For Internal RDVK builds only"
-
-endchoice
-
-choice
 	prompt "Linux kernel driver backports configuration"
 	default BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_USE_DEFCONFIG
 
@@ -59,6 +25,10 @@ endchoice
 config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_DEFCONFIG
 	string "Backports defconfig name"
 	depends on BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_USE_DEFCONFIG
+	default "bdimx8"         if BR2_SUMMIT_COMBO_IMAGE_RADIO && BR2_PACKAGE_BLUEZ5_UTILS
+	default "bdimx8_nbt"     if BR2_SUMMIT_COMBO_IMAGE_RADIO
+	default "som8mplus"      if BR2_SUMMIT_SOM8MP_RADIO && BR2_PACKAGE_BLUEZ5_UTILS
+	default "som8mplus_nbt"  if BR2_SUMMIT_SOM8MP_RADIO
 	default "som60_fips"     if BR2_SUMMIT_SOM60_RADIO && BR2_PACKAGE_BLUEZ5_UTILS && BR2_SUMMIT_FIPS_RADIO
 	default "som60_nbt_fips" if BR2_SUMMIT_SOM60_RADIO && BR2_SUMMIT_FIPS_RADIO
 	default "som60"          if BR2_SUMMIT_SOM60_RADIO && BR2_PACKAGE_BLUEZ5_UTILS
@@ -71,18 +41,14 @@ config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_DEFCONFIG
 	default "wb45n_nbt_fips" if BR2_SUMMIT_WB45N_LEGACY_RADIO && BR2_SUMMIT_FIPS_RADIO
 	default "wb45n"          if BR2_SUMMIT_WB45N_LEGACY_RADIO && BR2_PACKAGE_BLUEZ5_UTILS
 	default "wb45n_nbt"      if BR2_SUMMIT_WB45N_LEGACY_RADIO
-	default "som8mplus"      if BR2_SUMMIT_SOM8MP_RADIO && BR2_PACKAGE_BLUEZ5_UTILS
-	default "som8mplus_nbt"  if BR2_SUMMIT_SOM8MP_RADIO
-	default "summit60"       if BR2_SUMMIT_CORE_60_RADIO && BR2_PACKAGE_BLUEZ5_UTILS
-	default "summit60_nbt"   if BR2_SUMMIT_CORE_60_RADIO
-	default "lwb"            if BR2_SUMMIT_CORE_LWB_RADIO && BR2_PACKAGE_BLUEZ5_UTILS
-	default "lwb_nbt"        if BR2_SUMMIT_CORE_LWB_RADIO
-	default "sona_nx611"     if BR2_SUMMIT_CORE_NX_RADIO && BR2_PACKAGE_BLUEZ5_UTILS
-	default "sona_nx611_nbt" if BR2_SUMMIT_CORE_NX_RADIO
-	default "sona_ti"        if BR2_SUMMIT_CORE_TI_RADIO && BR2_PACKAGE_BLUEZ5_UTILS
-	default "sona_ti_nbt"    if BR2_SUMMIT_CORE_TI_RADIO
-	default "bdimx8"         if BR2_SUMMIT_COMBO_IMAGE_RADIO && BR2_PACKAGE_BLUEZ5_UTILS
-	default "bdimx8_nbt"     if BR2_SUMMIT_COMBO_IMAGE_RADIO
+	default "summit60"       if BR2_PACKAGE_SUMMIT_FIRMWARE_60 && BR2_PACKAGE_BLUEZ5_UTILS
+	default "summit60_nbt"   if BR2_PACKAGE_SUMMIT_FIRMWARE_60
+	default "lwb"            if BR2_PACKAGE_SUMMIT_FIRMWARE_LWB && BR2_PACKAGE_BLUEZ5_UTILS
+	default "lwb_nbt"        if BR2_PACKAGE_SUMMIT_FIRMWARE_LWB
+	default "sona_nx611"     if BR2_PACKAGE_SUMMIT_FIRMWARE_NX && BR2_PACKAGE_BLUEZ5_UTILS
+	default "sona_nx611_nbt" if BR2_PACKAGE_SUMMIT_FIRMWARE_NX
+	default "sona_ti"        if BR2_PACKAGE_SUMMIT_FIRMWARE_TI && BR2_PACKAGE_BLUEZ5_UTILS
+	default "sona_ti_nbt"    if BR2_PACKAGE_SUMMIT_FIRMWARE_TI
 	help
 	  Name of the backports defconfig file to use, without the
 	  leading defconfig-. The defconfig is located in defconfigs/
