@@ -1,8 +1,8 @@
 ifneq ($(BR2_LRD_DEVEL_BUILD),y)
 
 SUMMIT_FIRMWARE_NX_VERSION = $(SUMMIT_RADIO_STACK_VERSION_VALUE)
+SUMMIT_FIRMWARE_NX_SOURCE = $(firstword $(SUMMIT_FIRMWARE_NX_DOWNLOADS))
 SUMMIT_FIRMWARE_NX_EXTRA_DOWNLOADS = $(filter-out $(SUMMIT_FIRMWARE_NX_SOURCE),$(SUMMIT_FIRMWARE_NX_DOWNLOADS))
-
 SUMMIT_FIRMWARE_NX_STRIP_COMPONENTS = 0
 SUMMIT_FIRMWARE_NX_LICENSE = NXP, Ezurio
 SUMMIT_FIRMWARE_NX_LICENSE_FILES = LICENSE.nxp2 LICENSE.ezurio
@@ -18,28 +18,25 @@ else
 endif
 
 ifeq ($(BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X),y)
-SUMMIT_FIRMWARE_NX_SOURCE = summit-nx61x-firmware-$(SUMMIT_FIRMWARE_NX_VERSION).tar.bz2
-define SUMMIT_FIRMWARE_NX_INSTALL_MOD_PROBE
-  $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
-  echo "options moal mod_para=nxp/wifi_mod_params.conf" > $(TARGET_DIR)/etc/modprobe.d/moal.conf
-endef
+  SUMMIT_FIRMWARE_NX_DOWNLOADS += summit-nx61x-firmware-$(SUMMIT_FIRMWARE_NX_VERSION).tar.bz2
 endif
 
 ifeq ($(BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_1218),y)
-SUMMIT_FIRMWARE_NX_SOURCE = summit-nx61x-1218-firmware-$(SUMMIT_FIRMWARE_NX_VERSION).tar.bz2
-define SUMMIT_FIRMWARE_NX_INSTALL_MOD_PROBE
-  $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
-  echo "options moal mod_para=nxp/1218_wifi_mod_params.conf" > $(TARGET_DIR)/etc/modprobe.d/moal.conf
-endef
+  SUMMIT_FIRMWARE_NX_DOWNLOADS += summit-nx61x-1218-firmware-$(SUMMIT_FIRMWARE_NX_VERSION).tar.bz2
 endif
 
-define SUMMIT_FIRMWARE_NX_INSTALL_BINARIES
-  rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)
-endef
+ifeq ($(BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_SERDEV),y)
+  SUMMIT_FIRMWARE_NX_SERDEV = nxp/wifi_prod_serdev_params.conf
+else
+  SUMMIT_FIRMWARE_NX_SERDEV = nxp/wifi_prod_params.conf
+endif
 
 define SUMMIT_FIRMWARE_NX_INSTALL_TARGET_CMDS
-  $(SUMMIT_FIRMWARE_NX_INSTALL_BINARIES)
-  $(SUMMIT_FIRMWARE_NX_INSTALL_MOD_PROBE)
+  rsync -rlpDWK --no-perms --inplace $(@D)/lib $(TARGET_DIR)
+
+  $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
+  echo "options moal mod_para=$(SUMMIT_FIRMWARE_NX_SERDEV)" > \
+    $(TARGET_DIR)/etc/modprobe.d/moal.conf
 endef
 
 endif
