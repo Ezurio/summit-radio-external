@@ -5,7 +5,14 @@ menuconfig BR2_PACKAGE_SUMMIT_FIRMWARE_NX
 if BR2_PACKAGE_SUMMIT_FIRMWARE_NX
 
 config BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X
-	bool "NX61X"
+	bool "NX61x SIP, 1216, 2230"
 	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_NX61X if BR2_LRD_DEVEL_BUILD
+	help
+		Sona NX61x SIPT, 1216, and 2230 packages
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_SERDEV
+	bool "NX61x with serdev Bluetooth"
+	help
+		Sona NX61x with serdev Bluetooth support
 
 endif
