@@ -1,7 +1,7 @@
-sha256  219eb17af910b2c40f346381bd7e8d69b9f42c8cf8eb7dd1a55b40b8e941886a  summit-ti351-WW-firmware-13.0.0.29.tar.bz2
-sha256  b38433063da29a0ca1d72c7beaea0baa7cc64537786de78f64b8ba342eca0528  summit-ti351-US-firmware-13.0.0.29.tar.bz2
-sha256  f913bca3499fb32d3a1e049be17f89966a7fc8b49c8dea4ebf1bc8d15fa8d0c7  summit-ti351-JP-firmware-13.0.0.29.tar.bz2
-sha256  1d3b6ee0a6653709887a9f34cc3addd6a37517cd46d0402ee608ef80578ff278  summit-ti351-EU-firmware-13.0.0.29.tar.bz2
-sha256  360743f7c38ecbc7e14b783c8ee037139e7213b2bb43378bc4b1ccf5d415b3c1  summit-ti351-CA-firmware-13.0.0.29.tar.bz2
-sha256  e2b749c8b61d595fb02c9bb14736e0613ced5dd0c06df50a328ec8eb30d76616  summit-ti351-AU-firmware-13.0.0.29.tar.bz2
+sha256  8f90c25a643c289a81c8ec4041c556cea183e321eceb1a6a5cf3047c022cb747  summit-ti351-WW-firmware-13.0.0.30.tar.bz2
+sha256  2070246ba5ef38b32dca15304c6f9a44a0d3276fe0d1289e2bc0b2baf19da524  summit-ti351-US-firmware-13.0.0.30.tar.bz2
+sha256  6b50ab4090fa5feac02424becc4bac8556ed91fefbfc4caac42a20ee74b7c6f1  summit-ti351-JP-firmware-13.0.0.30.tar.bz2
+sha256  f09bebb3f580bfbf95058417b0036b1765a989ad2aba47be7deed39f340318fa  summit-ti351-EU-firmware-13.0.0.30.tar.bz2
+sha256  66481f680a9271315bdabfc50e94f44f5a2c2105308cf29f0fee78da8a21aefa  summit-ti351-CA-firmware-13.0.0.30.tar.bz2
+sha256  422e8a1ec8906125acc3422782f80876e73407c50665765d138f700c1b5fb940  summit-ti351-AU-firmware-13.0.0.30.tar.bz2
 sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio
