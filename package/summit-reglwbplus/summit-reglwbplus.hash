@@ -1,8 +1,8 @@
-sha256  2cb863e7d79e01662919cc36a3a02a59443ff3442282e496ee22becb7bc1095d  regLWBplus-x86-13.24.0.7.tar.bz2
-sha256  083602ce80a37daf1ab5ce439e97e50a5653d5400e695f2a25538d32e2e70b24  regLWBplus-x86_64-13.24.0.7.tar.bz2
-sha256  5629c390f3aa9ec44ac5bc53f2c0caaaa2400a62577a4052befcc76e59ad225a  regLWBplus-arm-eabi-13.24.0.7.tar.bz2
-sha256  33c1ad15c63082debc64953ee43e25d4d00a3c80c01dffdfcabd8c474c403a44  regLWBplus-arm-eabihf-13.24.0.7.tar.bz2
-sha256  dd1d67668dcbf5bf18eacd99148c35d77fa8f2ccd00ae9581f358a5a562941fb  regLWBplus-aarch64-13.24.0.7.tar.bz2
-sha256  11975d28e322591ecaf788d2933acd47434ee9f453e9c709724217d45d1febfa  regLWBplus-powerpc64-e5500-13.24.0.7.tar.bz2
+sha256  d8048ad39f3501cfebcf53ce26fc54aca7fdf284da3ef5ff8ea2c1e8dfeae7ab  regLWBplus-x86-13.24.0.9.tar.bz2
+sha256  594d026f48175ce98153ba5c0b7b3d90acec2c4c0b080bf3407582c0e8d85e67  regLWBplus-x86_64-13.24.0.9.tar.bz2
+sha256  34e57ae0f70c4f1c007fd6f1d69f7d279c017d2ad70f3fcd67344e65bad7f02f  regLWBplus-arm-eabi-13.24.0.9.tar.bz2
+sha256  7b6e8c2fdf114aeb4a557b77b2b2e39e5e62631bcfd7958c897ddebec20243a1  regLWBplus-arm-eabihf-13.24.0.9.tar.bz2
+sha256  cb633a4c2cef7acb27c3299d07c01400a7e8269d2d835cc8ec84e99302191437  regLWBplus-aarch64-13.24.0.9.tar.bz2
+sha256  a686ec9c1c8baa3a6df402341a172b9440cff5c08321088ee7df3b9cf2a5f75a  regLWBplus-powerpc64-e5500-13.24.0.9.tar.bz2
 sha256  34c3cec7451f3a1f5d42f282358ed564bdbb3bc582073873428c3d31cc643782  FOSS_README.txt
 sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio
