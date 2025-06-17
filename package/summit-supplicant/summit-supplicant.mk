@@ -141,7 +141,7 @@ endef
 
 define SUMMIT_SUPPLICANT_INSTALL_INIT_SYSTEMD
 	$(INSTALL) -m 0644 -D -t $(TARGET_DIR)/usr/lib/systemd/system \
-		$(@D)/wpa_supplicant/systemd/wpa_supplicant*.service \
+		$(@D)/wpa_supplicant/systemd/wpa_supplicant*.service
 	$(INSTALL) -m 0644 -D -t $(TARGET_DIR)/usr/lib/systemd/system-preset \
 		$(SUMMIT_SUPPLICANT_PKGDIR)/50-wpa_supplicant.preset
 endef
