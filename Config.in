@@ -13,7 +13,6 @@ choice
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		select BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT
-		select BR2_PACKAGE_SUMMIT_SUPPLICANT_WPA_CLI
 		help
 		  This option selects the radio bundle for the 60 Series SOMs
 
@@ -26,7 +25,6 @@ choice
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		select BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT
-		select BR2_PACKAGE_SUMMIT_SUPPLICANT_WPA_CLI
 		help
 		  This option selects the radio bundle for the Summit SOM 8M Plus
 
@@ -37,7 +35,6 @@ choice
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		select BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT
-		select BR2_PACKAGE_SUMMIT_SUPPLICANT_WPA_CLI
 		help
 		  This option selects the radio bundle for the WB50N Modern
 
@@ -76,7 +73,6 @@ choice
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		select BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT
-		select BR2_PACKAGE_SUMMIT_SUPPLICANT_WPA_CLI
 		select BR2_PACKAGE_SUMMIT_HOSTAPD
 		help
 		  This option selects the default radio bundle for the Common Image
@@ -90,7 +86,6 @@ choice
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
 		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
-		imply BR2_PACKAGE_SUMMIT_SUPPLICANT_WPA_CLI
 		imply BR2_PACKAGE_SUMMIT_HOSTAPD
 		help
 		  This option selects the default radio bundle for the Core 60 Radio
@@ -104,7 +99,6 @@ choice
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
 		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
-		imply BR2_PACKAGE_SUMMIT_SUPPLICANT_WPA_CLI
 		imply BR2_PACKAGE_SUMMIT_HOSTAPD
 		help
 		  This option selects the default radio bundle for the Core LWB/IF Radios
@@ -118,7 +112,6 @@ choice
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
 		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
-		imply BR2_PACKAGE_SUMMIT_SUPPLICANT_WPA_CLI
 		imply BR2_PACKAGE_SUMMIT_HOSTAPD
 		help
 		  This option selects the default radio bundle for the Core NX Radios
@@ -132,7 +125,6 @@ choice
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
 		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
-		imply BR2_PACKAGE_SUMMIT_SUPPLICANT_WPA_CLI
 		imply BR2_PACKAGE_SUMMIT_HOSTAPD
 		help
 		  This option selects the default radio bundle for the Core TI Radios
