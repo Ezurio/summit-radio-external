@@ -2,21 +2,35 @@ menuconfig BR2_PACKAGE_SUMMIT_SUPPLICANT
 	bool "Summit Supplicant"
 	select BR2_PACKAGE_LIBNL
 	select BR2_PACKAGE_OPENSSL
-	select BR2_PACKAGE_DBUS if !BR2_PACKAGE_SUMMIT_SUPPLICANT_LEGACY
 	help
 	  Summit Supplicant
 
 if BR2_PACKAGE_SUMMIT_SUPPLICANT
 
-config BR2_PACKAGE_SUMMIT_SUPPLICANT_WPA_CLI
+config BR2_PACKAGE_SUMMIT_SUPPLICANT_CLI
 	bool "Install wpa_cli binary"
 	help
 	  Install wpa_cli command line utility
 
-config BR2_PACKAGE_SUMMIT_SUPPLICANT_WPA_PASSPHRASE
+config BR2_PACKAGE_SUMMIT_SUPPLICANT_PASSPHRASE
 	bool "Install wpa_passphrase binary"
 	help
 	  Install wpa_passphrase command line utility.
+
+config BR2_PACKAGE_SUMMIT_SUPPLICANT_WPA_CLIENT_SO
+	bool "Install wpa_client shared library"
+	depends on !BR2_STATIC_LIBS
+	help
+	  Install libwpa_client.so.
+
+config BR2_PACKAGE_SUMMIT_SUPPLICANT_DBUS
+	bool "Enable support for the DBus control interface"
+	depends on BR2_TOOLCHAIN_HAS_THREADS # dbus
+	depends on !BR2_PACKAGE_SUMMIT_SUPPLICANT_LEGACY
+	select BR2_PACKAGE_DBUS
+	default y
+	help
+	  Enable support for the DBus control interface.
 
 config BR2_PACKAGE_SUMMIT_SUPPLICANT_LEGACY
 	bool "Summit Supplicant Legacy"
@@ -30,10 +44,10 @@ config BR2_PACKAGE_SUMMIT_SUPPLICANT_FIPS
 
 config BR2_PACKAGE_SUMMIT_SUPPLICANT_DBUS_P2P_ENABLED
 	bool "DBUS P2P Interfaces Enabled"
-	depends on BR2_PACKAGE_DBUS
-	depends on !BR2_PACKAGE_SUMMIT_SUPPLICANT_LEGACY
+	depends on BR2_PACKAGE_SUMMIT_SUPPLICANT_DBUS
 	help
-	  If dbus p2p is disabled, installs dbus_overlay.conf with p2p_disabled=1, run-time disabling P2P.
+	  If dbus p2p is disabled, installs dbus_overlay.conf with p2p_disabled=1,
+	  run-time disabling P2P.
 
 config BR2_PACKAGE_SUMMIT_SUPPLICANT_LIBS_LOCAL
 	bool "Internal build of the closed source libraries"
