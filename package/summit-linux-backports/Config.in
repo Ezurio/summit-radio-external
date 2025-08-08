@@ -70,4 +70,9 @@ config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_CONFIG_FRAGMENT_FILES
 	  A space-separated list of configuration fragment files, that
 	  will be merged to the main linux-backports configuration file.
 
+config BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_LOCAL
+	bool "Enable local backports"
+	help
+	  Enable the just built backports package.
+
 endif # BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
