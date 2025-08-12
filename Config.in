@@ -13,6 +13,7 @@ choice
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		select BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT
+		select BR2_PACKAGE_SUMMIT_SUPPLICANT_LIBS
 		help
 		  This option selects the radio bundle for the 60 Series SOMs
 
@@ -25,6 +26,7 @@ choice
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		select BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT
+		select BR2_PACKAGE_SUMMIT_SUPPLICANT_LIBS
 		help
 		  This option selects the radio bundle for the Summit SOM 8M Plus
 
