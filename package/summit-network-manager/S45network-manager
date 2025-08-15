@@ -8,7 +8,7 @@ case "${1}" in
 	start)
 		printf "Starting NetworkManager ... "
 		[ -d /var/run/NetworkManager ] || install -d /var/run/NetworkManager
-		[ -n "${PID}" ] && /usr/sbin/NetworkManager ${NETWORKMANAGER_ARGS} && \
+		[ -z "${PID}" ] && /usr/sbin/NetworkManager ${NETWORKMANAGER_ARGS} && \
 			echo "done." || echo "failed!"
 		;;
 	stop)
