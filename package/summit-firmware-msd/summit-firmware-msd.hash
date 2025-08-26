@@ -1,4 +1,4 @@
-sha256  abc314d357f66ebe4c8b7ea4b899a60c9a3004bf11a7ed7ef34ecc3bfc21c8e4  summit-ath6k-6003-firmware-13.0.0.58.tar.bz2
-sha256  040307dbd1c53f2d0ae3a7c0badd9ffb46e795108744743f5e0d742dda4f2758  summit-ath6k-6004-firmware-13.0.0.58.tar.bz2
+sha256  d21ca48ca556fb24bad83ba58e7a6696195b56da1f832f5cebfeddbdc1408af1  summit-ath6k-6003-firmware-13.0.0.64.tar.bz2
+sha256  700af2bc03aa6a4115b4b6062c0ba79aa699d9a258a2fdbde1b03fb5fcc9706f  summit-ath6k-6004-firmware-13.0.0.64.tar.bz2
 sha256  802b7014b26c606cf6248ae8b0ab1ce6d2d1b0db236d38dd269e676cd70710f2  LICENSE.atheros
 sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio
