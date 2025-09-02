@@ -1,0 +1,60 @@
+From bbae5ef2bf8147af4993a14ff0d62b50b1dcd1ea Mon Sep 17 00:00:00 2001
+From: Boris Krasnovskiy <boris.krasnovskiy@ezurio.com>
+Date: Tue, 19 Aug 2025 16:19:56 -0400
+Subject: [PATCH] Fixed automatic firmware selection
+
+PROD-33261
+---
+ main.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/net/wireless/summit/lrdmwl/main.c b/drivers/net/wireless/summit/lrdmwl/main.c
+index 82c34a5..1f90999 100644
+--- a/drivers/net/wireless/summit/lrdmwl/main.c
++++ b/drivers/net/wireless/summit/lrdmwl/main.c
+@@ -1860,31 +1860,31 @@ int mwl_add_card(void *card, struct mwl_if_ops *if_ops,
+ 		switch (priv->host_if) {
+ 		case MWL_IF_USB:
+ 			if (!strcmp(fwtype, "usb-uart")) {
+-				if_ops->mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_usb_uart.bin";
+-				if_ops->mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_usb_uart.bin";
++				priv->if_ops.mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_usb_uart.bin";
++				priv->if_ops.mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_usb_uart.bin";
+ 			} else if (!strcmp(fwtype, "usb-usb")) {
+-				if_ops->mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_usb_usb.bin";
+-				if_ops->mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_usb_usb.bin";
++				priv->if_ops.mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_usb_usb.bin";
++				priv->if_ops.mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_usb_usb.bin";
+ 			}
+ 			break;
+ 
+ 		case MWL_IF_SDIO:
+ 			if (!strcmp(fwtype, "sdio-uart")) {
+-				if_ops->mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_sdio_uart.bin";
+-				if_ops->mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_sdio_uart.bin";
++				priv->if_ops.mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_sdio_uart.bin";
++				priv->if_ops.mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_sdio_uart.bin";
+ 			} else if (!strcmp(fwtype, "sdio-sdio")) {
+-				if_ops->mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_sdio_sdio.bin";
+-				if_ops->mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_sdio_sdio.bin";
++				priv->if_ops.mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_sdio_sdio.bin";
++				priv->if_ops.mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_sdio_sdio.bin";
+ 			}
+ 			break;
+ 
+ 		case MWL_IF_PCIE:
+ 			if (!strcmp(fwtype, "pcie-uart")) {
+-				if_ops->mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_pcie_uart.bin";
+-				if_ops->mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_pcie_uart.bin";
++				priv->if_ops.mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_pcie_uart.bin";
++				priv->if_ops.mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_pcie_uart.bin";
+ 			} else if (!strcmp(fwtype, "pcie-usb")) {
+-				if_ops->mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_pcie_usb.bin";
+-				if_ops->mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_pcie_usb.bin";
++				priv->if_ops.mwl_chip_tbl.fw_image = MWL_FW_ROOT"/88W8997_pcie_usb.bin";
++				priv->if_ops.mwl_chip_tbl.mfg_image = MWL_FW_ROOT"/88W8997_mfg_pcie_usb.bin";
+ 			}
+ 			break;
+ 		}
+-- 
+2.51.0
