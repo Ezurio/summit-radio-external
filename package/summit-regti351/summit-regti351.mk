@@ -34,6 +34,7 @@ endif
 define SUMMIT_REGTI351_INSTALL_TARGET_CMDS
 	$(SUMMIT_REGTI351_BTLRU_INSTALL_TARGET_CMD)
 	$(INSTALL) -D -m 775 -t $(TARGET_DIR)/usr/bin $(@D)/lru$(SUMMIT_REGTI351_EXT)
+	$(INSTALL) -D -m 644 -t $(TARGET_DIR)/usr/lib/firmware/ti-connectivity $(@D)/ti351-conf*
 endef
 
 endif
