@@ -1,9 +1,9 @@
-sha256  f196443ce3faee35d2082e4c62db81f9d3ae31ba5caa82ddd8d80faafc629228  summit_supplicant_libs-x86-12.103.0.8.tar.bz2
-sha256  e975f00ddf73b760384776c674ee82e07f2ef5a0aec3bbe36d5249ef8f4f9ea1  summit_supplicant_libs-x86_64-12.103.0.8.tar.bz2
-sha256  8cdabc3365d94516fa5852078c691582e45de35c9bceaebb52b740bcee1273ef  summit_supplicant_libs-arm-eabi-12.103.0.8.tar.bz2
-sha256  9fb4cb5346306c0f1e3fbd0c3799b6597a835211d65efb5b7975421509ec828d  summit_supplicant_libs-arm-eabihf-12.103.0.8.tar.bz2
-sha256  aa366ae702e5943cfcbebb15a83e619dcaefb6c2ed284b6a1fb9d129093f3065  summit_supplicant_libs-aarch64-12.103.0.8.tar.bz2
-sha256  327c9178187270eca5d7fb752abf259de5df778cd70e72fbaf9ba4b81b2955cf  summit_supplicant_libs-powerpc64-e5500-12.103.0.8.tar.bz2
-sha256  4aa3bef812de589882d8f368b0d97ea04770c14966354a8952dabb2140570767  summit_supplicant_libs_legacy-arm-eabi-12.103.0.8.tar.bz2
-sha256  6c7f2944b128c7b9338e7d4bf6c6e5c2960133d534d99fd6aa4a010f88cbe189  summit_supplicant_libs_legacy-arm-eabihf-12.103.0.8.tar.bz2
+sha256  7db13d2532e5de0ce0936a8c0fab19c97c88fd2d26f061da7fec7362cfcf310c  summit_supplicant_libs-x86-12.103.83.1.tar.bz2
+sha256  8512d431dba4a65df75df26bbfd0d96e94219b18d53f9257b1a7f384b166f70a  summit_supplicant_libs-x86_64-12.103.83.1.tar.bz2
+sha256  fcff95d604174608e8a54fe3d2aad2930b8661a80aa420fbb8faef8f4f315004  summit_supplicant_libs-arm-eabi-12.103.83.1.tar.bz2
+sha256  664c3543176fea30ff4c9a2c82389f45247e734ca7bf87b02f87d6841203d6d8  summit_supplicant_libs-arm-eabihf-12.103.83.1.tar.bz2
+sha256  2e72ebd8e3cb616972a887c0107e081c0b7d34162573827d1b870be9e4fcc241  summit_supplicant_libs-aarch64-12.103.83.1.tar.bz2
+sha256  5f769563ab523226bb53aa75538ac217c7fced5a59c66f1932531a25027c87e5  summit_supplicant_libs-powerpc64-e5500-12.103.83.1.tar.bz2
+sha256  e678d756792d2c39477ccb03f2bbc06da62b1680f37f28ee30bf73b29e18c315  summit_supplicant_libs_legacy-arm-eabi-12.103.83.1.tar.bz2
+sha256  715755d1072b62db1186a4f1943a06e6b5f7c2b92cdeaf1e45dfa0eef06965f4  summit_supplicant_libs_legacy-arm-eabihf-12.103.83.1.tar.bz2
 sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio
