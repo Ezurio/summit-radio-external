@@ -1,9 +1,9 @@
-sha256  c0670c52e43eaae93db2b82fd387e5dccf1c6a0258792f788158cf6e6eaea792  summit_supplicant_libs-x86-12.103.83.2.tar.bz2
-sha256  ccd2df0b67686b5a22bd26ad05c8d8847db7bc58dc8aa44a9dcf38f0d8d8cce8  summit_supplicant_libs-x86_64-12.103.83.2.tar.bz2
-sha256  25c1247dbb95922314abcac2d6099fbf5728f072e9073779b02d5ad9db7bfaed  summit_supplicant_libs-arm-eabi-12.103.83.2.tar.bz2
-sha256  9b2e1c0c7b4309a622ea249d7e98edbe28aa2825a2fe83a06c0eb4556c575d12  summit_supplicant_libs-arm-eabihf-12.103.83.2.tar.bz2
-sha256  f8d974c985821625ffaf06ef293d9ff671e8bd1491dadaed272e0b93657f1f48  summit_supplicant_libs-aarch64-12.103.83.2.tar.bz2
-sha256  10280d0c7a640d6880cc3f49a1e1e9b03c1f23a05c8b27778d8100310299ea26  summit_supplicant_libs-powerpc64-e5500-12.103.83.2.tar.bz2
-sha256  018e5e2ddd8309d232107cec67e1f95626983a9c2f4cf052df91862368baa1d4  summit_supplicant_libs_legacy-arm-eabi-12.103.83.2.tar.bz2
-sha256  c35a7713f915d396a82f45c420af24bd36a1b8606e67f8d11be38547c28d2355  summit_supplicant_libs_legacy-arm-eabihf-12.103.83.2.tar.bz2
+sha256  fe80f770d132b4b486594baf36fab209f8caba5ab44c01bd1e47493b0b1b5869  summit_supplicant_libs-x86-12.103.83.3.tar.bz2
+sha256  218f39734a97a1517dd5206ab076489e7dd07f7bb655c6b208ea16c492401814  summit_supplicant_libs-x86_64-12.103.83.3.tar.bz2
+sha256  6f49f0653b94c1c97480e26893ea6ca916fa20b43e3cc83bf6b3689b6ab761ed  summit_supplicant_libs-arm-eabi-12.103.83.3.tar.bz2
+sha256  3dc7402fe7790ba47eae5a3c6f6a3a3de5235e1c715ceb88dab93702f8219b28  summit_supplicant_libs-arm-eabihf-12.103.83.3.tar.bz2
+sha256  a2fd54e821ac6af546a2385c4e1cc2b9f4e700e8733634e463c97f019ca62f0d  summit_supplicant_libs-aarch64-12.103.83.3.tar.bz2
+sha256  e38ae49cfa6442f698b46dd3add00c5263a9e35232558b47e933ad13fb60c578  summit_supplicant_libs-powerpc64-e5500-12.103.83.3.tar.bz2
+sha256  825f25cb5478a25b429fa4129718a78e3011c2ec98ec8e29b81c365549716558  summit_supplicant_libs_legacy-arm-eabi-12.103.83.3.tar.bz2
+sha256  915d7045067bcb3211116c25e14c4017de5f3e54b23b5e8db9ebd2d175591639  summit_supplicant_libs_legacy-arm-eabihf-12.103.83.3.tar.bz2
 sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio
