@@ -1,9 +1,9 @@
-sha256  adc8d3fdf1049d1abaf334c046508d53ed4a28cc388369403ab0580cd28d6d7e  summit_supplicant_libs-x86-13.98.0.4.tar.bz2
-sha256  f155b339bb8b5eaa404682d4b5c8e689890f30171ae3b629793eb154b8a659a4  summit_supplicant_libs-x86_64-13.98.0.4.tar.bz2
-sha256  cad4496dc7135b2f5eff86f5faadd42337234a925ac5c46cbc29d25a1bf32b3e  summit_supplicant_libs-arm-eabi-13.98.0.4.tar.bz2
-sha256  10c72965df5cfabac896816b2009a28115992bc04ea90840c419fa45100362b4  summit_supplicant_libs-arm-eabihf-13.98.0.4.tar.bz2
-sha256  de6a46c0cf0954e0de1b7942c00dc1ab3b1cfe57c4ecef25a0f07b3f7bce54eb  summit_supplicant_libs-aarch64-13.98.0.4.tar.bz2
-sha256  da7e800aec5bd071686fb1966de2d6bc3cf84f62a67c5265934feb80bd1506ef  summit_supplicant_libs-powerpc64-e5500-13.98.0.4.tar.bz2
-sha256  e2de1fd8e391af710fde03155392652985d561f0ef98af0e43790540627cd62c  summit_supplicant_libs_legacy-arm-eabi-13.98.0.4.tar.bz2
-sha256  43b1afcbdc7d02dcf9e39de6b91d9278c60a2ba4dd463d015af977f239452a6b  summit_supplicant_libs_legacy-arm-eabihf-13.98.0.4.tar.bz2
+sha256  d41452b60723bb6b3db9d24c0cf4d47c871a4bef764f15e4c6fcd50f006f1ac3  summit_supplicant_libs-x86-13.98.0.5.tar.bz2
+sha256  c521a702dff1a883a81c469468b1b99b9ba39bcaffef147ccd7312286a014677  summit_supplicant_libs-x86_64-13.98.0.5.tar.bz2
+sha256  6afefca1bc5869465b0d873dbd2a2cee6a0509ee7a35d03d535e8acce3b7c82a  summit_supplicant_libs-arm-eabi-13.98.0.5.tar.bz2
+sha256  fe098117b8e840f5469eb5e8737f1ab8f5ffb34929413fd1474492856ab08ee6  summit_supplicant_libs-arm-eabihf-13.98.0.5.tar.bz2
+sha256  ee5e0b3687ec728ba878eeb74edcc13b5e418a3471dc912ac4662ce76a0fcaed  summit_supplicant_libs-aarch64-13.98.0.5.tar.bz2
+sha256  f6e5eb47415197567d06451afdb4caf8cc1783ea81eb2a3857844348eda1f019  summit_supplicant_libs-powerpc64-e5500-13.98.0.5.tar.bz2
+sha256  0796bedd474707312555d570433253412b87dcb3d95afadbdd66e9117811ebe1  summit_supplicant_libs_legacy-arm-eabi-13.98.0.5.tar.bz2
+sha256  12e2ed5c1dafc990e51f9167e1eb84550b33216e044e4d1c217d493cd60ac1fc  summit_supplicant_libs_legacy-arm-eabihf-13.98.0.5.tar.bz2
 sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio
