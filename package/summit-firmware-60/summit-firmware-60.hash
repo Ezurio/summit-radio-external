@@ -1,9 +1,9 @@
-sha256  eb2370efbb48c2ded8ef8053c7b34f5c3275e175112872479a848d1da55686ec  summit-60-radio-firmware-pcie-uart-13.98.0.7.tar.bz2
-sha256  b108bd7c7f8ec08eaf40c8b0468d57f5dda7683d43e8dd6338d35f6f44ca3896  summit-60-radio-firmware-pcie-usb-13.98.0.7.tar.bz2
-sha256  c062e9495884629778018a9aa72909a86f2bec01abe7abcaaa9746d339f86f7f  summit-60-radio-firmware-sdio-uart-13.98.0.7.tar.bz2
-sha256  d6851008d0cbd0ac80a23e65adcd76ab73eb8372be05fd36ee51617cd422f96b  summit-60-radio-firmware-sdio-sdio-13.98.0.7.tar.bz2
-sha256  af49d3d97fdbd5cbc8c34f56f846ed0bba4acf6311587e799aa74ec6f56bebe6  summit-60-radio-firmware-usb-usb-13.98.0.7.tar.bz2
-sha256  f36bbc63d8acc6232bd573f1ef879bd2b91817c6680545ecad90829b08a48036  summit-60-radio-firmware-usb-uart-13.98.0.7.tar.bz2
-sha256  2751d943fbeb3281b0c542303597728ab3e2f983e2c0c43ecfbbdafe15702292  summit-som8mp-radio-firmware-13.98.0.7.tar.bz2
+sha256  2f6be27a800bb3c8c3b1b78933ff5d7525169f8b8540d0afa9ab65d7b082d89b  summit-60-radio-firmware-pcie-uart-13.98.0.8.tar.bz2
+sha256  d57cbc4761e0a1ecdf67949729522f698d25eb25c70a3477bcba27742de25424  summit-60-radio-firmware-pcie-usb-13.98.0.8.tar.bz2
+sha256  077335b53d862dc3d752e52cb095873dea2c801f8155c1d93832fdf0940c6c8f  summit-60-radio-firmware-sdio-uart-13.98.0.8.tar.bz2
+sha256  4d789d47d1906b9175fa7f105daf2eb65ac3607eb7ad0726d91971e7473ac9de  summit-60-radio-firmware-sdio-sdio-13.98.0.8.tar.bz2
+sha256  6f676a34df3819a609291be34cf8b3b65e96cb8886971138d39ed55d5a5363d7  summit-60-radio-firmware-usb-usb-13.98.0.8.tar.bz2
+sha256  2708f9d5831c1fa2529b0bf6df4e94cb163dc4fe157a72308e32c88ff91d4bba  summit-60-radio-firmware-usb-uart-13.98.0.8.tar.bz2
+sha256  514d13f6a4d8bcc033681b4f05a38055f52d8dcf6b4d9f9253d4354e909fe37b  summit-som8mp-radio-firmware-13.98.0.8.tar.bz2
 sha256  2accdbff2dfad766f2533a8976f15f550625253987b6ee75c06f80a8227822c2  LICENSE.nxp1
 sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio
