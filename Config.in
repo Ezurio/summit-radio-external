@@ -1,10 +1,61 @@
 
 choice
-	prompt "Radio Bundles"
+	prompt "Radio Stack Bundles"
 	optional
 
+	config BR2_SUMMIT_CORE_60_RADIO
+		bool "Core 60 Series Radio Stack Bundle"
+		imply BR2_PACKAGE_SUMMIT_ADAPTIVE_BT if BR2_PACKAGE_BLUEZ5_UTILS
+		imply BR2_PACKAGE_SUMMIT_ADAPTIVE_WW
+		imply BR2_PACKAGE_SUMMIT_BT_UART_SCRIPTS_60 if BR2_PACKAGE_BLUEZ5_UTILS
+		select BR2_PACKAGE_SUMMIT_FIRMWARE_60
+		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
+		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
+		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
+		imply BR2_PACKAGE_SUMMIT_HOSTAPD
+		help
+		  This option selects the default Radio Stack bundle for a 60 Series radio module.
+		  This option is suitable for any design using a 60 Series radio module.
+		  The correct 60 Series firmware package must be manually selected in addition to this package.
+
+	config BR2_SUMMIT_CORE_LWB_RADIO
+		bool "Core Sona IF/Sterling LWBx Radio Stack Bundle"
+		select BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF
+		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
+		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
+		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
+		imply BR2_PACKAGE_SUMMIT_HOSTAPD
+		help
+		  This option selects the default Radio Stack bundle for the Sona IF and Sterling LWBx radio modules.
+		  This option is suitable for any design using a Sona IF or Sterling LWBx radio module.
+		  The correct Sona IF or Sterling LWBx firmware package must be manually selected in addition to this package.
+
+	config BR2_SUMMIT_CORE_NX_RADIO
+		bool "Core Sona NX61x Radio Stack Bundle"
+		select BR2_PACKAGE_SUMMIT_FIRMWARE_NX
+		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
+		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
+		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
+		imply BR2_PACKAGE_SUMMIT_HOSTAPD
+		help
+		  This option selects the default Radio Stack bundle for a Sona NX radio module.
+		  This option is suitable for any design using a Sona NX radio module.
+		  The correct Sona NX firmware package must be manually selected in addition to this package.
+
+	config BR2_SUMMIT_CORE_TI_RADIO
+		bool "Core Sona TI Radio Stack Bundle"
+		select BR2_PACKAGE_SUMMIT_FIRMWARE_TI
+		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
+		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
+		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
+		imply BR2_PACKAGE_SUMMIT_HOSTAPD
+		help
+		  This option selects the default Radio Stack bundle for a Sona TI radio module.
+		  This option is suitable for any design using a Sona TI radio module.
+		  The correct Sona TI firmware package must be manually selected in addition to this package.
+
 	config BR2_SUMMIT_SOM60_RADIO
-		bool "SOM60 Radio Bundle"
+		bool "SOM60 Radio Stack Bundle"
 		select BR2_PACKAGE_SUMMIT_ADAPTIVE_BT if BR2_PACKAGE_BLUEZ5_UTILS
 		select BR2_PACKAGE_SUMMIT_ADAPTIVE_WW
 		select BR2_PACKAGE_SUMMIT_BT_UART_SCRIPTS_60 if BR2_PACKAGE_BLUEZ5_UTILS
@@ -15,10 +66,11 @@ choice
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT_LIBS
 		help
-		  This option selects the radio bundle for the 60 Series SOMs
+		  This option selects the Radio Stack bundle for the 60 Series SOM image.
+		  This option is typically used only with the Ezurio 60 Series SOM.
 
 	config BR2_SUMMIT_SOM8MP_RADIO
-		bool "Summit SOM8MP Radio Bundle"
+		bool "Summit SOM8MP Radio Stack Bundle"
 		select BR2_PACKAGE_SUMMIT_ADAPTIVE_BT if BR2_PACKAGE_BLUEZ5_UTILS
 		select BR2_PACKAGE_SUMMIT_ADAPTIVE_WW
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_60
@@ -28,40 +80,11 @@ choice
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT_LIBS
 		help
-		  This option selects the radio bundle for the Summit SOM 8M Plus
-
-	config BR2_SUMMIT_WB50N_SYSD_RADIO
-		bool "WB50N SYSD Radio Bundle"
-		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD
-		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD_50
-		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
-		select BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
-		select BR2_PACKAGE_SUMMIT_SUPPLICANT
-		help
-		  This option selects the radio bundle for the WB50N Modern
-
-	config BR2_SUMMIT_WB50N_LEGACY_RADIO
-		bool "WB50N Legacy Radio Bundle"
-		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD
-		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD_50
-		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
-		select BR2_PACKAGE_SUMMIT_SUPPLICANT
-		select BR2_PACKAGE_SUMMIT_SUPPLICANT_LEGACY
-		help
-		  This option selects the radio bundle for the WB50N Legacy
-
-	config BR2_SUMMIT_WB45N_LEGACY_RADIO
-		bool "WB45N Legacy Radio Bundle"
-		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD
-		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD_45
-		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
-		select BR2_PACKAGE_SUMMIT_SUPPLICANT
-		select BR2_PACKAGE_SUMMIT_SUPPLICANT_LEGACY
-		help
-		  This option selects the radio bundle for the WB45N Legacy
+		  This option selects the Radio Stack bundle for the Summit SOM 8M Plus image.
+		  This option is typically used only with the Ezurio Summit SOM 8M Plus SOM.
 
 	config BR2_SUMMIT_COMBO_IMAGE_RADIO
-		bool "Combo SOM Image Radio Bundle"
+		bool "Combo SOM Image Radio Stack Bundle"
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_60
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_60_SDIO_UART
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_60_SDIO_SDIO
@@ -76,62 +99,43 @@ choice
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT
 		select BR2_PACKAGE_SUMMIT_HOSTAPD
 		help
-		  This option selects the default radio bundle for the Common Image
+		  This option selects the default Radio Stack bundle for the Combo image.
+		  This option is typically used only with Ezurio SOMs that support multiple radio modules.
 
-	config BR2_SUMMIT_CORE_60_RADIO
-		bool "Core 60 Radio Bundle"
-		imply BR2_PACKAGE_SUMMIT_ADAPTIVE_BT if BR2_PACKAGE_BLUEZ5_UTILS
-		imply BR2_PACKAGE_SUMMIT_ADAPTIVE_WW
-		imply BR2_PACKAGE_SUMMIT_BT_UART_SCRIPTS_60 if BR2_PACKAGE_BLUEZ5_UTILS
-		select BR2_PACKAGE_SUMMIT_FIRMWARE_60
+	config BR2_SUMMIT_WB50N_SYSD_RADIO
+		bool "WB50N SYSD Radio Stack Bundle"
+		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD
+		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD_50
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
-		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
-		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
-		imply BR2_PACKAGE_SUMMIT_HOSTAPD
+		select BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
+		select BR2_PACKAGE_SUMMIT_SUPPLICANT
 		help
-		  This option selects the default radio bundle for the Core 60 Radio
-		  User needs to manually select proper firmware variant for the radio
-		  This option is suitable for customers who have purchased the standalone
-		  60 radio
+		  This option selects the Radio Stack bundle for the WB50N Modern image.
+		  This option is typically used only with the Ezurio WB50N SOM.
+		  
 
-	config BR2_SUMMIT_CORE_LWB_RADIO
-		bool "Core LWB/IF Radio Bundle"
-		select BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF
+	config BR2_SUMMIT_WB50N_LEGACY_RADIO
+		bool "WB50N Legacy Radio Stack Bundle"
+		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD
+		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD_50
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
-		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
-		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
-		imply BR2_PACKAGE_SUMMIT_HOSTAPD
+		select BR2_PACKAGE_SUMMIT_SUPPLICANT
+		select BR2_PACKAGE_SUMMIT_SUPPLICANT_LEGACY
 		help
-		  This option selects the default radio bundle for the Core LWB/IF Radios
-		  User needs to manually select proper firmware variant for the radio
-		  This option is suitable for customers who have purchased the standalone
-		  LWB or IF radio
+		  This option selects the Radio Stack bundle for the WB50N Legacy image.
+		  This option is typically used only with the Ezurio WB50N SOM.
 
-	config BR2_SUMMIT_CORE_NX_RADIO
-		bool "Core NX Radio Bundle"
-		select BR2_PACKAGE_SUMMIT_FIRMWARE_NX
+	config BR2_SUMMIT_WB45N_LEGACY_RADIO
+		bool "WB45N Legacy Radio Stack Bundle"
+		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD
+		select BR2_PACKAGE_SUMMIT_FIRMWARE_MSD_45
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
-		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
-		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
-		imply BR2_PACKAGE_SUMMIT_HOSTAPD
+		select BR2_PACKAGE_SUMMIT_SUPPLICANT
+		select BR2_PACKAGE_SUMMIT_SUPPLICANT_LEGACY
 		help
-		  This option selects the default radio bundle for the Core NX Radios
-		  User needs to manually select proper firmware variant for the radio
-		  This option is suitable for customers who have purchased the standalone
-		  NX radio
+		  This option selects the Radio Stack bundle for the WB45N Legacy image.
+		  This option is typically used only with the Ezurio WB45N SOM.
 
-	config BR2_SUMMIT_CORE_TI_RADIO
-		bool "Core TI Radio Bundle"
-		select BR2_PACKAGE_SUMMIT_FIRMWARE_TI
-		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
-		imply BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
-		imply BR2_PACKAGE_SUMMIT_SUPPLICANT
-		imply BR2_PACKAGE_SUMMIT_HOSTAPD
-		help
-		  This option selects the default radio bundle for the Core TI Radios
-		  User needs to manually select proper firmware variant for the radio
-		  This option is suitable for customers who have purchased the standalone
-		  TI radio
 endchoice
 
 config BR2_SUMMIT_60_RADIO
@@ -157,26 +161,26 @@ config BR2_PACKAGE_SUMMIT_RADIO_STACK_ARCH
 	default "x86" if BR2_i386
 	default "x86_64" if BR2_x86_64
 
+menu "Summit Radio Firmware"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-60/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-lwb-if/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-nx/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-ti/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-msd/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-bdsdmac/Config.in"
+endmenu
+
 comment "Summit Radio Stack individual components"
 
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-linux-backports/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-supplicant/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-supplicant-libs/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-network-manager/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-hostapd/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-adaptive_bt/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-adaptive_ww/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-brcm-patchram-plus/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-bt-uart-scripts-60/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-hostapd/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-linux-backports/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-network-manager/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-supplicant/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-supplicant-libs/Config.in"
-
-menu "Summit Radio Firmware"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-60/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-bdsdmac/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-lwb-if/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-msd/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-nx/Config.in"
-source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-ti/Config.in"
-endmenu
 
 menu "Summit Regulatory Tools"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-reg45n/Config.in"
