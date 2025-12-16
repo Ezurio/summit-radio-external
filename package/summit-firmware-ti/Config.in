@@ -1,34 +1,62 @@
 menuconfig BR2_PACKAGE_SUMMIT_FIRMWARE_TI
-	bool "TI Radio Firmware"
+	bool "Sona TI Radio Firmware"
 	select BR2_PACKAGE_WIRELESS_REGDB
 	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL if BR2_LRD_DEVEL_BUILD
 	select BR2_PACKAGE_SUMMIT_WIRELESS_REGDB if BR2_LRD_DEVEL_BUILD
 
 if BR2_PACKAGE_SUMMIT_FIRMWARE_TI
 
-config BR2_PACKAGE_SUMMIT_FIRMWARE_TI_351_AU
-	bool "TI351 AU"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_TI351_AU if BR2_LRD_DEVEL_BUILD
-
-config BR2_PACKAGE_SUMMIT_FIRMWARE_TI_351_CA
-	bool "TI351 CA"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_TI351_CA if BR2_LRD_DEVEL_BUILD
-
-config BR2_PACKAGE_SUMMIT_FIRMWARE_TI_351_EU
-	bool "TI351 EU"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_TI351_EU if BR2_LRD_DEVEL_BUILD
-
-config BR2_PACKAGE_SUMMIT_FIRMWARE_TI_351_JP
-	bool "TI351 JP"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_TI351_JP if BR2_LRD_DEVEL_BUILD
-
-config BR2_PACKAGE_SUMMIT_FIRMWARE_TI_351_US
-	bool "TI351 US"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_TI351_US if BR2_LRD_DEVEL_BUILD
-
 config BR2_PACKAGE_SUMMIT_FIRMWARE_TI_351_WW
-	bool "TI351 WW"
+	bool "Sona TI351 Limited World Wide Support"
 	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_TI351_WW if BR2_LRD_DEVEL_BUILD
 	default y
+	help
+	  Firmware package for the Sona TI351 with support for
+	  all countries listed in the Regulatory Release Notes.
+	  Channel support and power may be limited to ensure compliance
+	  in all supported regions.
+	  Only countries listed in the Regulatory Release Notes are supported.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_TI_351_AU
+	bool "Sona TI351 (Australia/New Zealand)"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_TI351_AU if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sona TI351 with optimized support for
+	  use in Australia and New Zealand. Operation outside
+	  Australia/New Zealand is not permitted.
+	  Please contact Ezurio for access and more details.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_TI_351_CA
+	bool "Sona TI351 (Canada)"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_TI351_CA if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sona TI351 with optimized support for
+	  use in Canada. Operation outside Canada is not permitted.
+	  Please contact Ezurio for access and more details.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_TI_351_EU
+	bool "Sona TI351 (EU)"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_TI351_EU if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sona TI351 with optimized support for
+	  use in EU member countries and the UK. Operation outside EU member countries
+	  and the UK is not permitted.
+	  Please contact Ezurio for access and more details.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_TI_351_JP
+	bool "Sona TI351 (Japan)"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_TI351_JP if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sona TI351 with optimized support for
+	  use in Japan. Operation outside Japan is not permitted.
+	  Please contact Ezurio for access and more details.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_TI_351_US
+	bool "Sona TI351 (United States)"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_TI351_US if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sona TI351 with optimized support for
+	  use in the United States. Operation outside the United States is not permitted.
+	  Please contact Ezurio for access and more details.
 
 endif
