@@ -5,55 +5,93 @@ menuconfig BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF
 
 if BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF
 
-config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB
-	bool "LWB"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4343 if BR2_LRD_DEVEL_BUILD
-
-config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_SDIO_DIV
-	bool "LWB5+ SDIO-DIV"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_SDIO_DIV if BR2_LRD_DEVEL_BUILD
-
-config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_SDIO_SA
-	bool "LWB5+ SDIO-SA"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_SDIO_SA if BR2_LRD_DEVEL_BUILD
-
-config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_SDIO_SA_M2
-	bool "LWB5+ SDIO-SA-M2"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_SDIO_SA_M2 if BR2_LRD_DEVEL_BUILD
-
-config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_USB_DIV
-	bool "LWB5+ USB-DIV"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_USB_DIV if BR2_LRD_DEVEL_BUILD
-
-config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_USB_SA
-	bool "LWB5+ USB-SA"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_USB_SA if BR2_LRD_DEVEL_BUILD
-
-config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_USB_SA_M2
-	bool "LWB5+ USB-SA-M2"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_USB_SA_M2 if BR2_LRD_DEVEL_BUILD
-
-config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWBPLUS
-	bool "LWB+"
-	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM43439 if BR2_LRD_DEVEL_BUILD
-
 config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_IF573_SDIO
-	bool "IF573 SDIO"
+	bool "Sona IF573 SDIO"
 	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_CYW55573_SDIO if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sona IF573 SDIO/UART module.
 
 config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_IF573_PCIE
-	bool "IF573 PCIE"
+	bool "Sona IF573 PCIE"
 	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_CYW55573_PCIE if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sona IF573 PCIE/UART module.
 
 config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_IF513_DIV
-	bool "IF513-DIV"
+	bool "Sona IF513 (Diversity)"
 	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_CYW55513_SDIO_DIV if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sona IF513 module with diversity antenna support.
 
 config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_IF513_SA
-	bool "IF513-SA"
+	bool "Sona IF513 (Single Antenna)"
 	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_CYW55513_SDIO_SA if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sona IF513 module with a single antenna.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_SDIO_DIV
+	bool "Sterling LWB5+ SDIO M.2 (Diversity)"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_SDIO_DIV if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sterling LWB5+ M.2 2230 SDIO/UART module
+	  with diversity antenna support.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_SDIO_SA
+	bool "Sterling LWB5+ SDIO (Single Antenna)"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_SDIO_SA if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sterling LWB5+ SDIO/UART module
+	  with a single antenna.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_SDIO_SA_M2
+	bool "Sterling LWB5+ SDIO M.2 (Single Antenna)"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_SDIO_SA_M2 if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sterling LWB5+ M.2 2230 SDIO/UART module
+	  with diversity antenna support.
+	  This is a special configuration used when only ANT0 is populated and the
+	  other antenna is terminated.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_USB_DIV
+	bool "Sterling LWB5+ USB M.2 (Diversity)"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_USB_DIV if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sterling LWB5+ M.2 2230 USB/USB module
+	  with diversity antenna support.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_USB_SA
+	bool "Sterling LWB5+ USB (Single Antenna) and Dongle"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_USB_SA if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sterling LWB5+ USB/USB module
+	  with a single antenna. 
+	  This package is also used with the LWB5+ USB dongle.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB5PLUS_USB_SA_M2
+	bool "Sterling LWB5+ USB M.2 (Single Antenna)"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4373_USB_SA_M2 if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sterling LWB5+ M.2 2230 USB/USB module
+	  with diversity antenna support.
+	  This is a special configuration used when only ANT0 is populated and the
+	  other antenna is terminated.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWBPLUS
+	bool "Sterling LWB+"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM43439 if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sterling LWB+ module.
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_LWB
+	bool "Sterling LWB"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_BCM4343 if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the Sterling LWB module.
 
 config BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_REGDOMAIN
 	string "Regulatory Domain"
+	help
+	  Country code setting
+	  See the Regulatory Release Notes for the set of supported countries.
 
 endif
