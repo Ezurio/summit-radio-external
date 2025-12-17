@@ -15,11 +15,25 @@ config BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_1218
 	bool "Sona NX61x M.2 1218 firmware"
 	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL_NX61X_1218 if BR2_LRD_DEVEL_BUILD
 	help
-		Sona NX61x firmware package for the M.2 1218 module with integrated chip antenna
+		Sona NX61x firmware package for the M.2 1218 module with integrated
+		chip antenna
+
+choice
+	prompt "Sona NX61x Bluetooth interface type"
+	default BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_SERDEV
 
 config BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_SERDEV
 	bool "Sona NX61x Bluetooth serdev support"
 	help
-		Select this in addition to the appropriate Sona NX61x firmware package to enable serdev Bluetooth client support
+		Select this in addition to the appropriate Sona NX61x firmware package
+		to enable serdev Bluetooth client support
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_BTATTACH
+	bool "Sona NX61x Bluetooth btattach support"
+	help
+		Select this in addition to the appropriate Sona NX61x firmware package
+		to enable btattach Bluetooth client support
+
+endchoice
 
 endif
