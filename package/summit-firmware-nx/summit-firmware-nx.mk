@@ -37,7 +37,9 @@ define SUMMIT_FIRMWARE_NX_INSTALL_TARGET_CMDS
   echo "options moal mod_para=nxp/wifi_prod_serdev_params.conf" > \
     $(TARGET_DIR)/etc/modprobe.d/moal.conf
 endef
-else
+endif
+
+ifeq ($(BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_BTATTACH),y)
 define SUMMIT_FIRMWARE_NX_INSTALL_TARGET_CMDS
   $(INSTALL) -D -m 0644 -t $(TARGET_DIR)/lib/firmware/nxp \
     $(@D)/lib/firmware/nxp/sduart_* \
