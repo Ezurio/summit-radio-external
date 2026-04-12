@@ -185,12 +185,20 @@ define SUMMIT_NETWORK_MANAGER_INSTALL_INIT_SYSV
 		$(TARGET_DIR)/etc/init.d/S45network-manager
 endef
 
+ifneq ($(BR2_PACKAGE_SYSTEMD_INITRD),y)
+define SUMMIT_NETWORK_MANAGER_REMOVE_SYSTEMD_INITRD
+	$(RM) $(TARGET_DIR)/usr/lib/systemd/system/NetworkManager*initrd.service
+endef
+endif
+
 define SUMMIT_NETWORK_MANAGER_INSTALL_INIT_SYSTEMD
 	ln -sf /usr/lib/systemd/system/NetworkManager.service \
 		$(TARGET_DIR)/etc/systemd/system/dbus-org.freedesktop.NetworkManager.service
 
 	$(SED) 's,--no-daemon,--no-daemon --state-file=/etc/NetworkManager/NetworkManager.state,' \
 		$(TARGET_DIR)/usr/lib/systemd/system/NetworkManager.service
+
+	$(SUMMIT_NETWORK_MANAGER_REMOVE_SYSTEMD_INITRD)	
 endef
 
 # create directories that may not be populated on certain builds
