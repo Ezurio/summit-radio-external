@@ -1,0 +1,9 @@
+sha256  baca828d82e676934d6019c6f97bf34907561ee1edb6e9c1d312249f448484ea  summit_supplicant_libs-x86-14.0.0.1.tar.bz2
+sha256  39cc83339f034c48fc45072b7f3b045545549aebeb2dc2c6f2f1afa2845240c1  summit_supplicant_libs-x86_64-14.0.0.1.tar.bz2
+sha256  2a20716376c6fd12dd9f3551d9051fdd77ea5c925b1c629008419fc39a233418  summit_supplicant_libs-arm-eabi-14.0.0.1.tar.bz2
+sha256  6e166462977871260932d9870d4f21bae730a82908ee3a2f9b034ff10e2af958  summit_supplicant_libs-arm-eabihf-14.0.0.1.tar.bz2
+sha256  18b622d28eeaf21b4704fe3d818c326141b8de999cbdcb8501f44bc1cb4100df  summit_supplicant_libs-aarch64-14.0.0.1.tar.bz2
+sha256  94ca7d96e39cb9680b7366a60fd0c4916002e212950c6bee97d54da195aa2fa6  summit_supplicant_libs-powerpc64-e5500-14.0.0.1.tar.bz2
+sha256  44d99e726d7e3f9307c012b95afb02729c9e13bf6357d657729625d6fc38bd5d  summit_supplicant_libs_legacy-arm-eabi-14.0.0.1.tar.bz2
+sha256  905562d2563edcb9eba9d0f76c724b29ee08315c3de693913db50faebccdb2ce  summit_supplicant_libs_legacy-arm-eabihf-14.0.0.1.tar.bz2
+sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio
