@@ -19,20 +19,24 @@ hash_file() {
 }
 
 calc_license_hash() {
-	local tarfile="${1}"
-	local licensefile="${2}"
-	local strip="${3:-1}"
-	if [ "${strip}" = "0" ]; then
-		${cmd} "set -e; cd ${prefix};
-			shfile=\$(basename ${tarfile} .tar.bz2).sh;
-			if tar -tf ${tarfile} \"\${shfile}\" >/dev/null 2>&1; then
-				tar -xOf ${tarfile} \"\${shfile}\" | sed '1,/^exit 0\$/d' | tar -xjOf - ${licensefile};
-			else
-				tar -xOf ${tarfile} ${licensefile};
-			fi | sha256sum"
-	else
-		${cmd} "tar -xOf ${prefix}/${tarfile} --wildcards '*/${licensefile}' | sha256sum"
-	fi | awk -v lf="${licensefile}" '{print "sha256  " $1 "  " lf}'
+	local tarfile="${1}" licensefile="${2}" strip="${3:-1}"
+	${cmd} "set -e; cd ${prefix};
+		case ${tarfile} in
+			*.tar.gz|*.tgz) comp=-z ;;
+			*.tar.bz2)      comp=-j ;;
+			*.tar.xz)       comp=-J ;;
+			*.tar.zst)      comp=--zstd ;;
+			*)              comp=  ;;
+		esac;
+		if [ ${strip} -eq 0 ]; then
+			if ! tar \${comp} -xOf ${tarfile} ${licensefile} 2>/dev/null; then
+				shfile=\$(basename ${tarfile} .tar.bz2).sh;
+				tar \${comp} -xOf ${tarfile} \"\${shfile}\" | sed '1,/^exit 0\$/d' | tar -xjOf - ${licensefile};
+			fi;
+		else
+			tar \${comp} --strip-components=${strip} --occurrence=1 --wildcards -xOf ${tarfile} '*/${licensefile}';
+		fi | sha256sum" | \
+		awk -v lf="${licensefile}" '{print "sha256  " $1 "  " lf}'
 }
 
 get_license_files() {
