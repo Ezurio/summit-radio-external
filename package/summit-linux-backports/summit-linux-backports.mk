@@ -48,9 +48,6 @@ SUMMIT_LINUX_BACKPORTS_KCONFIG_FILE = $(call qstrip,$(BR2_PACKAGE_SUMMIT_LINUX_B
 endif
 
 SUMMIT_LINUX_BACKPORTS_KCONFIG_FRAGMENT_FILES = $(call qstrip,$(BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS_CONFIG_FRAGMENT_FILES))
-SUMMIT_LINUX_BACKPORTS_KCONFIG_OPTS = $(SUMMIT_LINUX_BACKPORTS_MAKE_OPTS)
-
-SUMMIT_LINUX_BACKPORTS_MAKE_ENV = $(HOST_MAKE_ENV)
 
 # linux-backports' build system expects the config options to be present
 # in the environment, and it is so when using their custom buildsystem,
@@ -61,15 +58,16 @@ SUMMIT_LINUX_BACKPORTS_MAKE_ENV = $(HOST_MAKE_ENV)
 # .config file, filter-out comment lines and put the rest as command
 # line variables.
 #
-# SUMMIT_LINUX_BACKPORTS_MAKE_OPTS is used by the kconfig-package infra, while
+# SUMMIT_LINUX_BACKPORTS_KCONFIG_OPTS is used by the kconfig-package infra, while
 # SUMMIT_LINUX_BACKPORTS_MODULE_MAKE_OPTS is used by the kernel-module infra.
 #
-SUMMIT_LINUX_BACKPORTS_MAKE_OPTS = \
+SUMMIT_LINUX_BACKPORTS_KCONFIG_OPTS = \
+	KLIB_BUILD=$(LINUX_DIR)
+
+SUMMIT_LINUX_BACKPORTS_MODULE_MAKE_OPTS = \
 	KLIB_BUILD=$(LINUX_DIR) \
 	KLIB=$(TARGET_DIR)/lib/modules/$(LINUX_VERSION_PROBED) \
 	INSTALL_MOD_DIR=updates
-
-SUMMIT_LINUX_BACKPORTS_MODULE_MAKE_OPTS = $(SUMMIT_LINUX_BACKPORTS_MAKE_OPTS)
 
 define SUMMIT_LINUX_BACKPORTS_INSTALL_STAGING_CMDS
 	rsync -rlpDWK --no-perms --inplace --exclude module.h $(@D)/include $(@D)/backport-include $(STAGING_DIR)/usr/include/linux-backports
