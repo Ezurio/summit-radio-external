@@ -1,9 +1,9 @@
-sha256  06bbb118f3733a5cbaf32334ef50aed69e6b341c6cc2525cf31af05bec1d4db2  summit_supplicant_libs-x86-14.8.0.8.tar.bz2
-sha256  52a52690686e7e97785fd451567316dc0285c07b8a452eabdea7dfce5167220c  summit_supplicant_libs-x86_64-14.8.0.8.tar.bz2
-sha256  adfbf5cafc9968e0d284dfa7dd8c7f98ad65e70105969f4d19f55246723410a4  summit_supplicant_libs-arm-eabi-14.8.0.8.tar.bz2
-sha256  7d36df2d1ecb38c74ba388d5a7ecc34831a4676549dd4a4b6a931892d7a7e704  summit_supplicant_libs-arm-eabihf-14.8.0.8.tar.bz2
-sha256  99e2b04e6ea77333266ba8cb83d2384002c2a0f6471b1ad06c0c4012fa1cbe8c  summit_supplicant_libs-aarch64-14.8.0.8.tar.bz2
-sha256  07ce93290289309b0895fbb2de487029cfa2b59ed88772188d937663f5e76bee  summit_supplicant_libs-powerpc64-e5500-14.8.0.8.tar.bz2
-sha256  5746d029d81358aba4b59706caaf097858558cbc55b92153a3625dee5674f18c  summit_supplicant_libs_legacy-arm-eabi-14.8.0.8.tar.bz2
-sha256  e4b7b8f6cf49d465ccb1c124e2e9f1dbc46cadfd94efb8b0be1ac8036ca4ff83  summit_supplicant_libs_legacy-arm-eabihf-14.8.0.8.tar.bz2
+sha256  d6ec057d28b9f924fbbd0a841e473a46c51c56cc144b4b5682023cfe1c0010aa  summit_supplicant_libs-x86-14.8.0.9.tar.bz2
+sha256  9982c212ca70d583f707d55db200266104258b687f8bb337f00fe4a9e7a79eb6  summit_supplicant_libs-x86_64-14.8.0.9.tar.bz2
+sha256  ec8db607a3a20dc1d5bb50eeaf7598bc3c6083873bf3f9fda62e14774b7d4e9e  summit_supplicant_libs-arm-eabi-14.8.0.9.tar.bz2
+sha256  ce6c28ed15e8cce8e700be907282f5ac1c143b1903b57ab4ab1dd316f171643d  summit_supplicant_libs-arm-eabihf-14.8.0.9.tar.bz2
+sha256  5a20be13a9c12d64d4479a3ddfd34f252de319e743dacc226fd709d7b3e5d3a5  summit_supplicant_libs-aarch64-14.8.0.9.tar.bz2
+sha256  69d9b4ee2c819802e0aab28ffa705e623305a853806faf8881ce5b79f96d5d23  summit_supplicant_libs-powerpc64-e5500-14.8.0.9.tar.bz2
+sha256  362af96a707908490ce5ff4313b509180356dab2f4b13274630e81fd5a0a7fda  summit_supplicant_libs_legacy-arm-eabi-14.8.0.9.tar.bz2
+sha256  c6be4ce980d15be759dcd4a7d548a28bdffb0f62344b76ee2e2cc0c5eac271b1  summit_supplicant_libs_legacy-arm-eabihf-14.8.0.9.tar.bz2
 sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio

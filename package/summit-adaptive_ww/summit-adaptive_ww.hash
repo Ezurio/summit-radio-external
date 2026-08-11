@@ -1,7 +1,7 @@
-sha256  3023e9ade7e625897bcfc95f01b7143ec4153d0a0b59c04b133ec340db2caea9  adaptive_ww-x86-14.8.0.8.tar.bz2
-sha256  b36cda7eaab4f3886a7cb2359cddca8bb3d9e11e3d77eaf825e2550ed2e37dbd  adaptive_ww-x86_64-14.8.0.8.tar.bz2
-sha256  3144986c854b28d6837f20f4511f0a916e5fa0eb2aa18716d866b526205139f9  adaptive_ww-arm-eabi-14.8.0.8.tar.bz2
-sha256  66bafab1e59ed00fd3bd404e13fae48a675e1cdc6127e3d284a84894de5049d3  adaptive_ww-arm-eabihf-14.8.0.8.tar.bz2
-sha256  8ec002c056de7f40713658c6cacda45b2db684af25b34999fc05977cca782baf  adaptive_ww-aarch64-14.8.0.8.tar.bz2
-sha256  8fccd566672090938feaad0ed95010c98386bb4a6a0ffb09ae460e2b95a568e8  adaptive_ww-powerpc64-e5500-14.8.0.8.tar.bz2
+sha256  469cd5d422528cc0658aac239aef87b1eb8ea9060a1f4dfeecc4992d019add5e  adaptive_ww-x86-14.8.0.9.tar.bz2
+sha256  6d6b1c6e33accc0f631368e6a0c7f4dcaf3ea1b5a4d80b66f2c89df0a30e0987  adaptive_ww-x86_64-14.8.0.9.tar.bz2
+sha256  42e7949c1384cd769898b69670ac06b99f6571b7e759a87e6c3f62e746e96cec  adaptive_ww-arm-eabi-14.8.0.9.tar.bz2
+sha256  733d53fc0854ed679c8a8fd7b5cffc80c5405a2bae22fe3b00a190cc4d8ba94e  adaptive_ww-arm-eabihf-14.8.0.9.tar.bz2
+sha256  0c4e1576b2c874e0e3b548a5de2b24b7f2d5e26718c57eb34e3463f3de1d054b  adaptive_ww-aarch64-14.8.0.9.tar.bz2
+sha256  02c2eeb3ed6a9c883f5506d85bf4b3b79aece258735240032c9b2348d75895e5  adaptive_ww-powerpc64-e5500-14.8.0.9.tar.bz2
 sha256  ff126d9b0f7f474b2652064d045c6b25a015eb94f9d0ac29c96d053c94577343  LICENSE.ezurio
