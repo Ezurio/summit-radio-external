@@ -1,4 +1,4 @@
-sha256  f6ee054e214cf651b18de21a66a61c8e4d3fca200991f3c2321ef72f1660656e  regCypress-arm-eabi-14.8.0.11.tar.bz2
-sha256  9c5cf5e5972c7afab8a5fa0db6da42c801e0f8cd1b262ebb93dd80cd85bcbf76  regCypress-arm-eabihf-14.8.0.11.tar.bz2
-sha256  f861c40e976ae12c4287ff7a52e78eb14cc580ad799d848fa187d57e1c4a08b9  regCypress-aarch64-14.8.0.11.tar.bz2
+sha256  95c78e958ca91457d75413655240f01b1bd3cb5a6c519eca73da55a27ebced61  regCypress-arm-eabi-14.8.0.12.tar.bz2
+sha256  6f60a538145beaa1a193d3eecd98ef864fcf25ea8195613549796c53f0c7a2a3  regCypress-arm-eabihf-14.8.0.12.tar.bz2
+sha256  6a04f7ecda9856990e914a8cdfb0d51c4838db0213cd69c5d334d52328ec8d6d  regCypress-aarch64-14.8.0.12.tar.bz2
 sha256  34c3cec7451f3a1f5d42f282358ed564bdbb3bc582073873428c3d31cc643782  FOSS_README.txt
