@@ -27,11 +27,13 @@ endif
 
 ifeq ($(BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_SERDEV),y)
 define SUMMIT_FIRMWARE_NX_INSTALL_TARGET_CMDS
-  $(INSTALL) -D -m 0644 -t $(TARGET_DIR)/lib/firmware/nxp \
+  $(INSTALL) -d $(TARGET_DIR)/lib/firmware/nxp
+  cp -af \
     $(@D)/lib/firmware/nxp/sd_* \
     $(@D)/lib/firmware/nxp/uart* \
     $(@D)/lib/firmware/nxp/*rgpower* \
-    $(@D)/lib/firmware/nxp/wifi_prod_serdev_params.conf
+    $(@D)/lib/firmware/nxp/wifi_prod_serdev_params.conf \
+    $(TARGET_DIR)/lib/firmware/nxp/
 
   $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
   echo "options moal mod_para=nxp/wifi_prod_serdev_params.conf" > \
@@ -41,10 +43,12 @@ endif
 
 ifeq ($(BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X_BTATTACH),y)
 define SUMMIT_FIRMWARE_NX_INSTALL_TARGET_CMDS
-  $(INSTALL) -D -m 0644 -t $(TARGET_DIR)/lib/firmware/nxp \
+  $(INSTALL) -d $(TARGET_DIR)/lib/firmware/nxp
+  cp -af \
     $(@D)/lib/firmware/nxp/sduart_* \
     $(@D)/lib/firmware/nxp/*rgpower* \
-    $(@D)/lib/firmware/nxp/wifi_prod_params.conf
+    $(@D)/lib/firmware/nxp/wifi_prod_params.conf \
+    $(TARGET_DIR)/lib/firmware/nxp/
 
   $(INSTALL) -d $(TARGET_DIR)/etc/modprobe.d
   echo "options moal mod_para=nxp/wifi_prod_params.conf" > \
