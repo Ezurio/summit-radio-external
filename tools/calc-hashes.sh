@@ -209,7 +209,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 # Calculate hashes for the summit-firmware-ti package
 {
 	files=
-	for i in WW US JP EU CA AU
+	for i in WW AE AR AU BH BN BR CA CN CO CR DO EU HK HN ID IN JO JP KR KW MX MY OM PA PH QA SA SG SV TH TR TT US VN
 	do
 		files="${files} firmware/${version}/summit-ti351-${i}-firmware-${version}.tar.bz2"
 	done
