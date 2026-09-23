@@ -91,6 +91,7 @@ choice
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_IF573_SDIO
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_LWB_IF_IF513_DIV
+		select BR2_PACKAGE_SUMMIT_FIRMWARE_MT320_SDIO
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_NX
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_NX61X
 		select BR2_PACKAGE_SUMMIT_FIRMWARE_TI
@@ -166,6 +167,7 @@ source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-60/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-lwb-if/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-nx/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-ti/Config.in"
+source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-mt320-sdio/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-msd/Config.in"
 source "$BR2_EXTERNAL_SUMMIT_RADIO_PATH/package/summit-firmware-bdsdmac/Config.in"
 endmenu

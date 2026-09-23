@@ -1,0 +1,16 @@
+config BR2_PACKAGE_SUMMIT_FIRMWARE_MT320_SDIO
+	bool "MediaTek MT320 SDIO (WiFi+Bluetooth)"
+	select BR2_PACKAGE_SUMMIT_FIRMWARE_DEVEL if BR2_LRD_DEVEL_BUILD
+	help
+	  Firmware package for the MediaTek MT320 radio with SDIO interface.
+	  Includes WiFi and Bluetooth support via SDIO.
+
+if BR2_PACKAGE_SUMMIT_FIRMWARE_MT320_SDIO
+
+config BR2_PACKAGE_SUMMIT_FIRMWARE_MT320_REGDOMAIN
+	string "MediaTek MT320 regulatory domain"
+	help
+	  Two-letter country code passed to the MT320 WLAN module. Leave
+	  empty when the country is provisioned later.
+
+endif
