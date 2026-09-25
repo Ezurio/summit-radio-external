@@ -7,11 +7,25 @@ err_report() {
 }
 
 prefix="/var/www/html/builds/linux"
-cmd="ssh -o ControlMaster=auto -o ControlPersist=5s -o ControlPath=/tmp/ssh-fileshare fileshare@files.devops.rfpros.com"
+remote="fileshare@files.devops.rfpros.com"
+ssh_opts="-o ControlMaster=auto -o ControlPersist=5s -o ControlPath=/tmp/ssh-fileshare"
+tmpdir=$(mktemp -d)
+trap 'rm -rf "${tmpdir}"' EXIT
+
+download_files() {
+	local file sources=""
+	for file in ${1}; do
+		sources="${sources} ${remote}:${prefix}/${file}"
+	done
+	scp ${ssh_opts} ${sources} "${tmpdir}/"
+}
 
 calc_hash() {
-  ${cmd} "set -e; cd ${prefix} && sha256sum ${1}" | \
-    sed -r "s/([0-9a-f]+)  .*\/(.*-[0-9.]+\.tar.*)/sha256  \1  \2/"
+	local file local_file
+	for file in ${1}; do
+		local_file="${tmpdir}/$(basename "${file}")"
+		sha256sum "${local_file}" | awk -v name="$(basename "${file}")" '{print "sha256  " $1 "  " name}'
+	done
 }
 
 hash_file() {
@@ -20,23 +34,21 @@ hash_file() {
 
 calc_license_hash() {
 	local tarfile="${1}" licensefile="${2}" strip="${3:-1}"
-	${cmd} "set -e; cd ${prefix};
-		case ${tarfile} in
-			*.tar.gz|*.tgz) comp=-z ;;
-			*.tar.bz2)      comp=-j ;;
-			*.tar.xz)       comp=-J ;;
-			*.tar.zst)      comp=--zstd ;;
-			*)              comp=  ;;
-		esac;
-		if [ ${strip} -eq 0 ]; then
-			if ! tar \${comp} -xOf ${tarfile} ${licensefile} 2>/dev/null; then
-				shfile=\$(basename ${tarfile} .tar.bz2).sh;
-				tar \${comp} -xOf ${tarfile} \"\${shfile}\" | sed '1,/^exit 0\$/d' | tar -xjOf - ${licensefile};
-			fi;
-		else
-			tar \${comp} --strip-components=${strip} --occurrence=1 --wildcards -xOf ${tarfile} '*/${licensefile}';
-		fi | sha256sum" | \
-		awk -v lf="${licensefile}" '{print "sha256  " $1 "  " lf}'
+	local shfile comp=""
+	case "${tarfile}" in
+		*.tar.gz|*.tgz) comp=-z ;;
+		*.tar.bz2)      comp=-j ;;
+		*.tar.xz)       comp=-J ;;
+		*.tar.zst)      comp=--zstd ;;
+	esac
+	if [ "${strip}" -eq 0 ]; then
+		if ! tar ${comp} -xOf "${tarfile}" "${licensefile}" 2>/dev/null; then
+			shfile="$(basename "${tarfile}" .tar.bz2).sh"
+			tar ${comp} -xOf "${tarfile}" "${shfile}" | sed '1,/^exit 0$/d' | tar -xjOf - "${licensefile}"
+		fi
+	else
+		tar ${comp} --strip-components="${strip}" --occurrence=1 --wildcards -xOf "${tarfile}" "*/${licensefile}"
+	fi | sha256sum | awk -v lf="${licensefile}" '{print "sha256  " $1 "  " lf}'
 }
 
 get_license_files() {
@@ -62,11 +74,12 @@ get_strip_components() {
 calc_license_hashes() {
 	local tarfile="${1}"
 	local pkg="${2}"
-	local strip
+	local strip local_tar
 	echo "Calculating license hashes for ${pkg}..." >&2
 	strip=$(get_strip_components "${pkg}")
+	local_tar="${tmpdir}/$(basename "${tarfile}")"
 	for lf in $(get_license_files "${pkg}"); do
-		calc_license_hash "${tarfile}" "${lf}" "${strip}"
+		calc_license_hash "${local_tar}" "${lf}" "${strip}"
 	done
 }
 
@@ -80,6 +93,7 @@ sed -i -r "s/(.+=).*/\1 ${1}/g" versions.mk
 	do
 		files="${files} adaptive_ww/laird/${version}/adaptive_ww-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "adaptive_ww/laird/${version}/adaptive_ww-x86-${version}.tar.bz2" "summit-adaptive_ww"
@@ -88,6 +102,7 @@ sed -i -r "s/(.+=).*/\1 ${1}/g" versions.mk
 # Calculate hashes for the summit-adaptive_bt package
 {
 	files="adaptive_bt/src/${version}/adaptive_bt-src-${version}.tar.gz"
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "adaptive_bt/src/${version}/adaptive_bt-src-${version}.tar.gz" "summit-adaptive_bt"
@@ -105,6 +120,7 @@ sed -i -r "s/(.+=).*/\1 ${1}/g" versions.mk
 	do
 		files="${files} summit_supplicant/laird/${version}/summit_supplicant_libs_legacy-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "summit_supplicant/laird/${version}/summit_supplicant_libs-x86-${version}.tar.bz2" "summit-supplicant-libs"
@@ -113,6 +129,7 @@ sed -i -r "s/(.+=).*/\1 ${1}/g" versions.mk
 # Calculate hashes for the summit-supplicant package
 {
 	files="summit_supplicant/laird/${version}/summit_supplicant-src-${version}.tar.gz"
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "summit_supplicant/laird/${version}/summit_supplicant-src-${version}.tar.gz" "summit-supplicant"
@@ -124,6 +141,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 # Calculate hashes for the summit-linux-backports package
 {
 	files="backports/laird/${version}/summit-backports-${version}.tar.bz2"
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "backports/laird/${version}/summit-backports-${version}.tar.bz2" "summit-linux-backports"
@@ -132,6 +150,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 # Calculate hashes for the summit-network-manager package
 {
 	files="lrd-network-manager/src/${version}/summit-network-manager-src-${version}.tar.xz"
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "lrd-network-manager/src/${version}/summit-network-manager-src-${version}.tar.xz" "summit-network-manager"
@@ -145,6 +164,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 		files="${files} firmware/${version}/summit-60-radio-firmware-${i}-${version}.tar.bz2"
 	done
 	files="${files} firmware/${version}/summit-som8mp-radio-firmware-${version}.tar.bz2"
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "firmware/${version}/summit-60-radio-firmware-pcie-uart-${version}.tar.bz2" "summit-firmware-60"
@@ -153,6 +173,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 # Calculate hashes for the summit-firmware-bdsdmac package
 {
 	files="firmware/${version}/summit-bdsdmac-firmware-${version}.tar.bz2"
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "firmware/${version}/summit-bdsdmac-firmware-${version}.tar.bz2" "summit-firmware-bdsdmac"
@@ -178,6 +199,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} firmware/${version}/summit-if513-${i}-firmware-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "firmware/${version}/summit-lwb-firmware-${version}.tar.bz2" "summit-firmware-lwb-if"
@@ -190,6 +212,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} firmware/${version}/summit-ath6k-${i}-firmware-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "firmware/${version}/summit-ath6k-6003-firmware-${version}.tar.bz2" "summit-firmware-msd"
@@ -201,6 +224,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	files=
 	files="${files} firmware/${version}/summit-nx61x-firmware-${version}.tar.bz2"
 	files="${files} firmware/${version}/summit-nx61x-1218-firmware-${version}.tar.bz2"
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "firmware/${version}/summit-nx61x-firmware-${version}.tar.bz2" "summit-firmware-nx"
@@ -213,6 +237,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} firmware/${version}/summit-ti351-${i}-firmware-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "firmware/${version}/summit-ti351-WW-firmware-${version}.tar.bz2" "summit-firmware-ti"
@@ -225,6 +250,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} mfg60n/laird/${version}/mfg60n-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "mfg60n/laird/${version}/mfg60n-x86-${version}.tar.bz2" "summit-mfg60n"
@@ -237,6 +263,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} mfg611/laird/${version}/mfg611-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "mfg611/laird/${version}/mfg611-x86-${version}.tar.bz2" "summit-mfg611"
@@ -249,6 +276,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} reg45n/laird/${version}/reg45n-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "reg45n/laird/${version}/reg45n-arm-eabi-${version}.tar.bz2" "summit-reg45n"
@@ -261,6 +289,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} reg50n/laird/${version}/reg50n-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "reg50n/laird/${version}/reg50n-arm-eabi-${version}.tar.bz2" "summit-reg50n"
@@ -273,6 +302,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} regCypress/laird/${version}/regCypress-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "regCypress/laird/${version}/regCypress-arm-eabi-${version}.tar.bz2" "summit-regcypress"
@@ -285,6 +315,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} regLWB5plus/laird/${version}/regLWB5plus-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "regLWB5plus/laird/${version}/regLWB5plus-x86-${version}.tar.bz2" "summit-reglwb5plus"
@@ -297,6 +328,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} regLWBplus/laird/${version}/regLWBplus-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "regLWBplus/laird/${version}/regLWBplus-x86-${version}.tar.bz2" "summit-reglwbplus"
@@ -309,6 +341,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} regIF573/laird/${version}/regIF573-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "regIF573/laird/${version}/regIF573-x86-${version}.tar.bz2" "summit-regif573"
@@ -321,6 +354,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} regIF513/laird/${version}/regIF513-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "regIF513/laird/${version}/regIF513-x86-${version}.tar.bz2" "summit-regif513"
@@ -332,6 +366,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 	do
 		files="${files} regTI351/laird/${version}/regTI351-${i}-${version}.tar.bz2"
 	done
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "regTI351/laird/${version}/regTI351-x86-${version}.tar.bz2" "summit-regti351"
