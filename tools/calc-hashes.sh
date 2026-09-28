@@ -173,6 +173,7 @@ cp -f "$(hash_file summit-supplicant)" "$(hash_file summit-hostapd)"
 # Calculate hashes for the summit-firmware-mt320-sdio package
 {
 	files="firmware/${version}/summit-mt320-sdio-firmware-${version}.tar.bz2"
+	download_files "${files}"
 	calc_hash "${files}"
 
 	calc_license_hashes "firmware/${version}/summit-mt320-sdio-firmware-${version}.tar.bz2" "summit-firmware-mt320-sdio"
