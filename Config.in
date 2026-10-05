@@ -109,6 +109,7 @@ choice
 		select BR2_PACKAGE_SUMMIT_LINUX_BACKPORTS
 		select BR2_PACKAGE_SUMMIT_NETWORK_MANAGER
 		select BR2_PACKAGE_SUMMIT_SUPPLICANT
+		select BR2_PACKAGE_SUMMIT_SUPPLICANT_LIBS
 		help
 		  This option selects the Radio Stack bundle for the WB50N Modern image.
 		  This option is typically used only with the Ezurio WB50N SOM.
